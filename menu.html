@@ -23,26 +23,14 @@
         .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 8px 32px rgba(62, 39, 35, 0.05); }
         .glass-strong { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 1); box-shadow: 0 10px 40px rgba(62, 39, 35, 0.08); }
         .text-gradient { background: linear-gradient(135deg, #D4A373 0%, #F4ACB7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        
-        /* The Minecraft Float Animation */
-        @keyframes float-cup {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-        }
-        .animate-float {
-            animation: float-cup 3s ease-in-out infinite;
-        }
-        .delay-1 { animation-delay: 0.5s; }
-        .delay-2 { animation-delay: 1s; }
-        .delay-3 { animation-delay: 1.5s; }
-
-        /* The "No Background" Trick for JPGs */
-        .blend-multiply {
-            mix-blend-mode: multiply;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
-        }
-
+        @keyframes float-cup { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+        .animate-float { animation: float-cup 3s ease-in-out infinite; }
+        .delay-1 { animation-delay: 0.5s; } .delay-2 { animation-delay: 1s; } .delay-3 { animation-delay: 1.5s; }
+        .blend-multiply { mix-blend-mode: multiply; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); }
         .category-btn.active { background-color: #3E2723; color: #FDFBF7; border-color: #3E2723; }
+        .menu-item { transition: all 0.4s ease; }
+        .menu-item:hover { transform: translateY(-8px); }
+        .menu-item.hidden { display: none; }
         ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D4A373; border-radius: 4px; }
     </style>
 </head>
@@ -64,111 +52,498 @@
         </div>
     </nav>
 
-    <!-- Menu Header -->
-    <section class="pt-32 pb-12 text-center relative z-10">
-        <h1 class="font-display text-5xl md:text-7xl font-bold text-tea mb-4">Our <span class="text-gradient">Menu</span></h1>
-        <p class="text-teaLight text-lg max-w-2xl mx-auto px-6">Crafted for indulgence. Choose your base, customize your sweetness, and add your favorite toppings.</p>
+    <!-- Header -->
+    <section class="pt-32 pb-8 text-center relative z-10">
+        <h1 class="font-display text-5xl md:text-7xl font-bold text-tea mb-4">Long Tea <span class="text-gradient">Menu</span></h1>
+        <p class="text-teaLight text-lg max-w-2xl mx-auto px-6">Find your flavor. Make it yours.</p>
     </section>
 
-    <!-- Category Filter -->
-    <div class="sticky top-24 z-40 py-4 bg-cream/80 backdrop-blur-md border-y border-caramel/10">
-        <div class="container mx-auto px-6 overflow-x-auto">
-            <div class="flex gap-3 min-w-max justify-center md:justify-start">
-                <button class="category-btn active px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm transition-all hover:bg-caramel hover:text-cream" data-category="all">All</button>
-                <button class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="milk-tea">Milk Tea</button>
-                <button class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="fruit-tea">Fruit Tea</button>
-                <button class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="signature">Signature</button>
-                <button class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="snacks">Snacks</button>
+    <!-- Signature Picks -->
+    <section class="py-12 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="font-display text-3xl font-bold text-center text-tea mb-8">✨ Signature Picks</h2>
+            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="glass rounded-3xl p-6 text-center hover:-translate-y-2 transition-all">
+                    <img src="images/menu/signature-boba.webp" class="w-full h-48 object-contain blend-multiply animate-float mb-4" alt="Signature Boba">
+                    <h3 class="font-display text-xl font-bold text-tea">Signature Boba Tea</h3>
+                    <p class="text-caramel font-bold mt-2">450 ETB / 560 ETB</p>
+                </div>
+                <div class="glass rounded-3xl p-6 text-center hover:-translate-y-2 transition-all">
+                    <img src="images/menu/brown-sugar-boba.webp" class="w-full h-48 object-contain blend-multiply animate-float delay-1 mb-4" alt="Brown Sugar Boba">
+                    <h3 class="font-display text-xl font-bold text-tea">Brown Sugar Boba Milk</h3>
+                    <p class="text-caramel font-bold mt-2">450 ETB / 560 ETB</p>
+                </div>
+                <div class="glass rounded-3xl p-6 text-center hover:-translate-y-2 transition-all">
+                    <img src="images/menu/mango-pomelo.webp" class="w-full h-48 object-contain blend-multiply animate-float delay-2 mb-4" alt="Mango Pomelo">
+                    <h3 class="font-display text-xl font-bold text-tea">Mango Pomelo Sago</h3>
+                    <p class="text-caramel font-bold mt-2">630 ETB</p>
+                </div>
+                <div class="glass rounded-3xl p-6 text-center hover:-translate-y-2 transition-all">
+                    <img src="images/menu/mixed-fruit.webp" class="w-full h-48 object-contain blend-multiply animate-float delay-3 mb-4" alt="Mixed Fruit">
+                    <h3 class="font-display text-xl font-bold text-tea">Super Mixed Fruit Tea</h3>
+                    <p class="text-caramel font-bold mt-2">600 ETB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Category Filter -->
+    <div class="sticky top-24 z-40 py-4 bg-cream/90 backdrop-blur-md border-y border-caramel/10">
+        <div class="container mx-auto px-6">
+            <div class="flex gap-3 justify-center mb-4">
+                <button onclick="filterCategory('all')" class="category-btn active px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm transition-all hover:bg-caramel hover:text-cream" data-category="all">ALL</button>
+                <button onclick="filterCategory('drinks')" class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="drinks"> DRINKS</button>
+                <button onclick="filterCategory('food')" class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="food">🧇 FOOD</button>
+            </div>
+            
+            <!-- Drink Subcategories -->
+            <div id="drinkSubcats" class="flex gap-2 justify-center overflow-x-auto hidden">
+                <button onclick="filterSubcategory('boba')" class="px-4 py-1.5 rounded-full bg-white/60 text-tea text-sm font-semibold hover:bg-caramel hover:text-cream transition-all">Boba & Milk Tea</button>
+                <button onclick="filterSubcategory('pure-tea')" class="px-4 py-1.5 rounded-full bg-white/60 text-tea text-sm font-semibold hover:bg-caramel hover:text-cream transition-all">Pure Tea</button>
+                <button onclick="filterSubcategory('fruit-tea')" class="px-4 py-1.5 rounded-full bg-white/60 text-tea text-sm font-semibold hover:bg-caramel hover:text-cream transition-all">Fruit Tea</button>
+                <button onclick="filterSubcategory('specialty')" class="px-4 py-1.5 rounded-full bg-white/60 text-tea text-sm font-semibold hover:bg-caramel hover:text-cream transition-all">Specialty</button>
+                <button onclick="filterSubcategory('smoothies')" class="px-4 py-1.5 rounded-full bg-white/60 text-tea text-sm font-semibold hover:bg-caramel hover:text-cream transition-all">Smoothies</button>
+                <button onclick="filterSubcategory('coffee')" class="px-4 py-1.5 rounded-full bg-white/60 text-tea text-sm font-semibold hover:bg-caramel hover:text-cream transition-all">Coffee</button>
+            </div>
+            
+            <!-- Food Subcategories -->
+            <div id="foodSubcats" class="flex gap-2 justify-center overflow-x-auto hidden">
+                <button onclick="filterSubcategory('waffles')" class="px-4 py-1.5 rounded-full bg-white/60 text-tea text-sm font-semibold hover:bg-caramel hover:text-cream transition-all">Bubble Waffles</button>
+                <button onclick="filterSubcategory('ice-cream')" class="px-4 py-1.5 rounded-full bg-white/60 text-tea text-sm font-semibold hover:bg-caramel hover:text-cream transition-all">Ice Cream & Desserts</button>
             </div>
         </div>
     </div>
 
     <!-- Menu Grid -->
-    <section class="py-16 relative z-10">
+    <section class="py-12 relative z-10">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="menuGrid">
                 
-                <!-- Item 1: Signature Boba -->
-                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="milk-tea signature">
-                    <div class="relative h-80 flex items-center justify-center p-6 rounded-t-3xl bg-gradient-to-b from-white/50 to-transparent">
-                        <img src="images/boba.jpg" class="w-full h-full object-contain blend-multiply animate-float" alt="Signature Boba">
-                        <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-caramel text-cream rounded-full text-xs font-bold shadow-md">Signature</span>
-                        </div>
+                <!-- BOBA & MILK TEA -->
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/signature-boba.webp" class="w-full h-full object-contain blend-multiply" alt="Signature Boba">
                     </div>
-                    <div class="p-6 pt-2">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-display text-2xl font-bold text-tea">Signature Boba Tea</h3>
-                            <span class="font-display text-xl font-bold text-caramel">450 ETB</span>
-                        </div>
-                        <p class="text-teaLight text-sm leading-relaxed mb-6">Our classic masterpiece. Premium black tea, rich creamy milk, and warm brown sugar handmade pearls.</p>
-                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Customize & Order</button>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Signature Boba Tea</h3>
+                        <p class="text-caramel font-bold">Medium 450 ETB / Large 560 ETB</p>
                     </div>
                 </div>
 
-                <!-- Item 2: Sweet Matcha (FIXED SRC) -->
-                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="milk-tea">
-                    <div class="relative h-80 flex items-center justify-center p-6 rounded-t-3xl bg-gradient-to-b from-white/50 to-transparent">
-                        <img src="images/matcha.jpg" class="w-full h-full object-contain blend-multiply animate-float delay-1" alt="Sweet Matcha">
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/brown-sugar-boba.webp" class="w-full h-full object-contain blend-multiply" alt="Brown Sugar Boba">
                     </div>
-                    <div class="p-6 pt-2">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-display text-2xl font-bold text-tea">Sweet Matcha</h3>
-                            <span class="font-display text-xl font-bold text-caramel">450 ETB</span>
-                        </div>
-                        <p class="text-teaLight text-sm leading-relaxed mb-6">Ceremonial grade matcha whisked to perfection, layered with fresh milk and a hint of natural sweetness.</p>
-                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Customize & Order</button>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Brown Sugar Boba Milk Tea</h3>
+                        <p class="text-caramel font-bold">Medium 450 ETB / Large 560 ETB</p>
                     </div>
                 </div>
 
-                <!-- Item 3: Mango Pomelo -->
-                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="fruit-tea signature">
-                    <div class="relative h-80 flex items-center justify-center p-6 rounded-t-3xl bg-gradient-to-b from-white/50 to-transparent">
-                        <img src="images/mango.jpg" class="w-full h-full object-contain blend-multiply animate-float delay-2" alt="Mango Pomelo">
-                        <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-berry text-cream rounded-full text-xs font-bold shadow-md">Popular</span>
-                        </div>
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/sweet-azuki.webp" class="w-full h-full object-contain blend-multiply" alt="Sweet Azuki">
                     </div>
-                    <div class="p-6 pt-2">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-display text-2xl font-bold text-tea">Mango Pomelo Sago</h3>
-                            <span class="font-display text-xl font-bold text-caramel">450 ETB</span>
-                        </div>
-                        <p class="text-teaLight text-sm leading-relaxed mb-6">A refreshing tropical escape. Sweet mango purée, juicy pomelo sacs, and sago pearls in a light coconut base.</p>
-                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Customize & Order</button>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Sweet Azuki Milk Tea</h3>
+                        <p class="text-caramel font-bold">Medium 450 ETB / Large 560 ETB</p>
                     </div>
                 </div>
 
-                <!-- Item 4: Mixed Fruit Tea -->
-                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="fruit-tea">
-                    <div class="relative h-80 flex items-center justify-center p-6 rounded-t-3xl bg-gradient-to-b from-white/50 to-transparent">
-                        <img src="images/mango.jpg" class="w-full h-full object-contain blend-multiply animate-float delay-3" alt="Mixed Fruit Tea">
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/coconut-jelly.webp" class="w-full h-full object-contain blend-multiply" alt="Coconut Jelly">
                     </div>
-                    <div class="p-6 pt-2">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-display text-2xl font-bold text-tea">Super Mixed Fruit Tea</h3>
-                            <span class="font-display text-xl font-bold text-caramel">400 ETB</span>
-                        </div>
-                        <p class="text-teaLight text-sm leading-relaxed mb-6">A vibrant medley of seasonal fruits brewed with premium jasmine green tea. Light, crisp, and invigorating.</p>
-                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Customize & Order</button>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Coconut Jelly Milk Tea</h3>
+                        <p class="text-caramel font-bold">Medium 450 ETB / Large 560 ETB</p>
                     </div>
                 </div>
 
-                <!-- Item 5: Egg Tarts -->
-                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="snacks">
-                    <div class="relative h-80 flex items-center justify-center p-6 rounded-t-3xl bg-gradient-to-b from-white/50 to-transparent">
-                        <img src="images/boba.jpg" class="w-full h-full object-contain blend-multiply animate-float" alt="Egg Tarts">
-                        <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-matcha text-cream rounded-full text-xs font-bold shadow-md">Fresh Daily</span>
-                        </div>
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/silky-pudding.webp" class="w-full h-full object-contain blend-multiply" alt="Silky Pudding">
                     </div>
-                    <div class="p-6 pt-2">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-display text-2xl font-bold text-tea">Freshly Baked Egg Tarts</h3>
-                            <span class="font-display text-xl font-bold text-caramel">150 ETB</span>
-                        </div>
-                        <p class="text-teaLight text-sm leading-relaxed mb-6">Flaky, buttery pastry shells filled with a smooth, creamy, and subtly sweet egg custard. The perfect pairing.</p>
-                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Add to Order</button>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Silky Pudding Milk Tea</h3>
+                        <p class="text-caramel font-bold">Medium 450 ETB / Large 560 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/jasmine-boba.webp" class="w-full h-full object-contain blend-multiply" alt="Jasmine Boba">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Jasmine Boba Milk Tea</h3>
+                        <p class="text-caramel font-bold">Medium 450 ETB / Large 560 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/oolong-boba.webp" class="w-full h-full object-contain blend-multiply" alt="Oolong Boba">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Oolong Boba Milk Tea</h3>
+                        <p class="text-caramel font-bold">Medium 450 ETB / Large 560 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/dahongpao-boba.webp" class="w-full h-full object-contain blend-multiply" alt="Da Hong Pao">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Da Hong Pao Boba Milk Tea</h3>
+                        <p class="text-caramel font-bold">Medium 450 ETB / Large 560 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/matcha-milk.webp" class="w-full h-full object-contain blend-multiply" alt="Matcha Milk">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Matcha Milk Tea</h3>
+                        <p class="text-caramel font-bold">560 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/chocolate-milk.webp" class="w-full h-full object-contain blend-multiply" alt="Chocolate Milk">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Chocolate Milk Tea</h3>
+                        <p class="text-caramel font-bold">560 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="boba">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/avocado-coconut.webp" class="w-full h-full object-contain blend-multiply" alt="Avocado Coconut">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Avocado Coconut Milk Tea</h3>
+                        <p class="text-caramel font-bold">560 ETB</p>
+                    </div>
+                </div>
+
+                <!-- PURE TEA -->
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="pure-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/jasmine-foam.webp" class="w-full h-full object-contain blend-multiply" alt="Jasmine Foam">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Jasmine Tea with Milk Foam</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="pure-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/black-tea-foam.webp" class="w-full h-full object-contain blend-multiply" alt="Black Tea Foam">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Chinese Black Tea with Milk Foam</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="pure-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/jasmine-green.webp" class="w-full h-full object-contain blend-multiply" alt="Jasmine Green">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Jasmine Green Tea</h3>
+                        <p class="text-caramel font-bold">350 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="pure-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/tieguanyin.webp" class="w-full h-full object-contain blend-multiply" alt="Tieguanyin">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Tieguanyin Oolong Tea</h3>
+                        <p class="text-caramel font-bold">350 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="pure-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/dahongpao-black.webp" class="w-full h-full object-contain blend-multiply" alt="Da Hong Pao Black">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Da Hong Pao Black Tea</h3>
+                        <p class="text-caramel font-bold">350 ETB</p>
+                    </div>
+                </div>
+
+                <!-- FRUIT TEA -->
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="fruit-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/mixed-fruit.webp" class="w-full h-full object-contain blend-multiply" alt="Mixed Fruit">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Super Mixed Fruit Tea</h3>
+                        <p class="text-caramel font-bold">600 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="fruit-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/passion-orange.webp" class="w-full h-full object-contain blend-multiply" alt="Passion Orange">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Passionfruit Orange Tea</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="fruit-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/strawberry-lemon.webp" class="w-full h-full object-contain blend-multiply" alt="Strawberry Lemon">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Strawberry Lemon Tea</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="fruit-tea">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/lemon-black.webp" class="w-full h-full object-contain blend-multiply" alt="Lemon Black">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Lemon Black Tea</h3>
+                        <p class="text-caramel font-bold">450 ETB</p>
+                    </div>
+                </div>
+
+                <!-- SPECIALTY DRINKS -->
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="specialty">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/mango-pomelo.webp" class="w-full h-full object-contain blend-multiply" alt="Mango Pomelo">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Mango Pomelo Sago</h3>
+                        <p class="text-caramel font-bold">630 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="specialty">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/lemon-yakult.webp" class="w-full h-full object-contain blend-multiply" alt="Lemon Yakult">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Lemon Yakult</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="specialty">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/peach-yakult.webp" class="w-full h-full object-contain blend-multiply" alt="Peach Yakult">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Peach Yakult</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="specialty">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/strawberry-yakult.webp" class="w-full h-full object-contain blend-multiply" alt="Strawberry Yakult">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Strawberry Yakult</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <!-- SMOOTHIES & SLUSHIES -->
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="smoothies">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/mango-smoothie.webp" class="w-full h-full object-contain blend-multiply" alt="Mango Smoothie">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Mango Smoothie</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="smoothies">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/avocado-milkshake.webp" class="w-full h-full object-contain blend-multiply" alt="Avocado Milkshake">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Avocado Milkshake</h3>
+                        <p class="text-caramel font-bold">630 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="smoothies">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/strawberry-smoothie.webp" class="w-full h-full object-contain blend-multiply" alt="Strawberry Smoothie">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Strawberry Smoothie</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="smoothies">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/grape-smoothie.webp" class="w-full h-full object-contain blend-multiply" alt="Grape Smoothie">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Grape Smoothie</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="smoothies">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/chocolate-milkshake.webp" class="w-full h-full object-contain blend-multiply" alt="Chocolate Milkshake">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Chocolate Milkshake</h3>
+                        <p class="text-caramel font-bold">630 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="smoothies">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/matcha-milkshake.webp" class="w-full h-full object-contain blend-multiply" alt="Matcha Milkshake">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Matcha Milkshake</h3>
+                        <p class="text-caramel font-bold">630 ETB</p>
+                    </div>
+                </div>
+
+                <!-- COFFEE -->
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="coffee">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/coconut-latte.webp" class="w-full h-full object-contain blend-multiply" alt="Coconut Latte">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Fresh Coconut Latte</h3>
+                        <p class="text-caramel font-bold">550 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="coffee">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/oat-latte.webp" class="w-full h-full object-contain blend-multiply" alt="Oat Latte">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Oat Milk Latte</h3>
+                        <p class="text-caramel font-bold">500 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="coffee">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/cappuccino.webp" class="w-full h-full object-contain blend-multiply" alt="Cappuccino">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Cappuccino</h3>
+                        <p class="text-caramel font-bold">500 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="drinks" data-subcategory="coffee">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/americano.webp" class="w-full h-full object-contain blend-multiply" alt="Americano">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Americano</h3>
+                        <p class="text-caramel font-bold">350 ETB</p>
+                    </div>
+                </div>
+
+                <!-- FOOD: BUBBLE WAFFLES -->
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="food" data-subcategory="waffles">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/fruit-waffle.webp" class="w-full h-full object-contain blend-multiply" alt="Fruit Waffle">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Fruit Bubble Waffle with Ice Cream</h3>
+                        <p class="text-caramel font-bold">700 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="food" data-subcategory="waffles">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/boba-waffle.webp" class="w-full h-full object-contain blend-multiply" alt="Boba Waffle">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Boba Bubble Waffle with Ice Cream</h3>
+                        <p class="text-caramel font-bold">700 ETB</p>
+                    </div>
+                </div>
+
+                <!-- FOOD: ICE CREAM & DESSERTS -->
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="food" data-subcategory="ice-cream">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/chocolate-cone.webp" class="w-full h-full object-contain blend-multiply" alt="Chocolate Cone">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Chocolate Ice Cream Cone</h3>
+                        <p class="text-caramel font-bold">200 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="food" data-subcategory="ice-cream">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/milk-cone.webp" class="w-full h-full object-contain blend-multiply" alt="Milk Cone">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Milk Ice Cream Cone</h3>
+                        <p class="text-caramel font-bold">200 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="food" data-subcategory="ice-cream">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/fruit-sundae.webp" class="w-full h-full object-contain blend-multiply" alt="Fruit Sundae">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Fruit Sundae</h3>
+                        <p class="text-caramel font-bold">450 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="food" data-subcategory="ice-cream">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/chocolate-sundae.webp" class="w-full h-full object-contain blend-multiply" alt="Chocolate Sundae">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Chocolate Sundae</h3>
+                        <p class="text-caramel font-bold">450 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="food" data-subcategory="ice-cream">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/oreo-sundae.webp" class="w-full h-full object-contain blend-multiply" alt="Oreo Sundae">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Oreo Sundae</h3>
+                        <p class="text-caramel font-bold">450 ETB</p>
+                    </div>
+                </div>
+
+                <div class="menu-item glass rounded-3xl overflow-hidden" data-category="food" data-subcategory="ice-cream">
+                    <div class="relative h-72 bg-white flex items-center justify-center p-6">
+                        <img src="images/menu/boba-sundae.webp" class="w-full h-full object-contain blend-multiply" alt="Boba Sundae">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl font-bold text-tea mb-2">Boba Sundae</h3>
+                        <p class="text-caramel font-bold">450 ETB</p>
                     </div>
                 </div>
 
@@ -177,7 +552,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-milk border-t border-caramel/20 pt-16 pb-8 relative z-10">
+    <footer class="bg-milk border-t border-caramel/20 pt-16 pb-8 relative z-10 mt-12">
         <div class="container mx-auto px-6 text-center">
             <div class="flex items-center justify-center gap-2 mb-4">
                 <div class="w-8 h-8 rounded-full bg-caramel flex items-center justify-center text-white font-bold text-sm">LT</div>
@@ -188,23 +563,52 @@
     </footer>
 
     <script>
-        const buttons = document.querySelectorAll('.category-btn');
-        const items = document.querySelectorAll('.menu-item');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                buttons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const category = button.getAttribute('data-category');
-                items.forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category').includes(category)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+        function filterCategory(category) {
+            // Update buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.getAttribute('data-category') === category) {
+                    btn.classList.add('active');
+                }
             });
-        });
+
+            // Show/hide subcategories
+            document.getElementById('drinkSubcats').classList.add('hidden');
+            document.getElementById('foodSubcats').classList.add('hidden');
+            
+            if(category === 'drinks') {
+                document.getElementById('drinkSubcats').classList.remove('hidden');
+            } else if(category === 'food') {
+                document.getElementById('foodSubcats').classList.remove('hidden');
+            }
+
+            // Filter items
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if(category === 'all') {
+                    item.classList.remove('hidden');
+                } else {
+                    const itemCategory = item.getAttribute('data-category');
+                    if(itemCategory === category) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        function filterSubcategory(subcategory) {
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                const itemSubcategory = item.getAttribute('data-subcategory');
+                if(itemSubcategory === subcategory) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
     </script>
 </body>
 </html>
