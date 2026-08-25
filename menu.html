@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Long Tea</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { cream: '#FDFBF7', milk: '#F5EFE6', caramel: '#D4A373', matcha: '#A3B18A', berry: '#F4ACB7', taro: '#CDB4DB', tea: '#3E2723', teaLight: '#6D4C41' },
+                    fontFamily: { display: ['Playfair Display', 'serif'], body: ['Plus Jakarta Sans', 'sans-serif'] },
+                    animation: { 'float': 'float 6s ease-in-out infinite', 'rise': 'rise 10s linear infinite' },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-15px)' } },
+                        rise: { '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' }, '50%': { opacity: '0.5' }, '100%': { transform: 'translateY(-10vh) scale(1)', opacity: '0' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FDFBF7; color: #3E2723; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 8px 32px rgba(62, 39, 35, 0.05); }
+        .glass-strong { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 10px 40px rgba(62, 39, 35, 0.08); }
+        .text-gradient { background: linear-gradient(135deg, #D4A373 0%, #F4ACB7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .boba-pearl { position: absolute; bottom: -20px; background: radial-gradient(circle at 30% 30%, #6D4C41, #3E2723); border-radius: 50%; box-shadow: inset -2px -2px 6px rgba(0,0,0,0.3); z-index: 0; }
+        .category-btn.active { background-color: #3E2723; color: #FDFBF7; border-color: #3E2723; }
+        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D4A373; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Boba Background -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="boba-pearl w-6 h-6 animate-rise" style="left: 10%; animation-duration: 12s;"></div>
+        <div class="boba-pearl w-4 h-4 animate-rise" style="left: 70%; animation-duration: 15s; animation-delay: 3s;"></div>
+        <div class="boba-pearl w-8 h-8 animate-rise" style="left: 40%; animation-duration: 10s; animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-6xl">
+        <div class="glass-strong rounded-full px-6 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-caramel flex items-center justify-center text-white font-bold text-sm">LT</div>
+                <span class="font-display text-xl font-bold tracking-wide text-tea">LONG TEA</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-semibold text-teaLight hover:text-caramel">Home</a>
+                <a href="menu.html" class="text-sm font-bold text-tea">Menu</a>
+                <a href="index.html#story" class="text-sm font-semibold text-teaLight hover:text-caramel">Our Story</a>
+                <a href="index.html#locations" class="text-sm font-semibold text-teaLight hover:text-caramel">Locations</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Header -->
+    <section class="pt-32 pb-12 text-center relative z-10">
+        <h1 class="font-display text-5xl md:text-7xl font-bold text-tea mb-4">Our <span class="text-gradient">Menu</span></h1>
+        <p class="text-teaLight text-lg max-w-2xl mx-auto px-6">Crafted for indulgence. Choose your base, customize your sweetness, and add your favorite toppings.</p>
+    </section>
+
+    <!-- Category Filter -->
+    <div class="sticky top-24 z-40 py-4 bg-cream/80 backdrop-blur-md border-y border-caramel/10">
+        <div class="container mx-auto px-6 overflow-x-auto">
+            <div class="flex gap-3 min-w-max justify-center md:justify-start">
+                <button class="category-btn active px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm transition-all hover:bg-caramel hover:text-cream" data-category="all">All</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="milk-tea">Milk Tea</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="fruit-tea">Fruit Tea</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="signature">Signature</button>
+                <button class="category-btn px-6 py-2 rounded-full border border-caramel/30 font-bold text-sm text-tea transition-all hover:bg-caramel hover:text-cream" data-category="snacks">Snacks</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Grid -->
+    <section class="py-16 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
+                
+                <!-- Item 1 -->
+                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="milk-tea signature">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1571328003758-4a3921661729?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Signature Boba">
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-caramel text-cream rounded-full text-xs font-bold">Signature</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-tea">Signature Boba Tea</h3>
+                            <span class="font-display text-xl font-bold text-caramel">450 ETB</span>
+                        </div>
+                        <p class="text-teaLight text-sm leading-relaxed mb-6">Our classic masterpiece. Premium black tea, rich creamy milk, and warm brown sugar handmade pearls.</p>
+                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Customize & Order</button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="milk-tea">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515823662972-da6a2e4d3112?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Sweet Matcha">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-tea">Sweet Matcha</h3>
+                            <span class="font-display text-xl font-bold text-caramel">450 ETB</span>
+                        </div>
+                        <p class="text-teaLight text-sm leading-relaxed mb-6">Ceremonial grade matcha whisked to perfection, layered with fresh milk and a hint of natural sweetness.</p>
+                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Customize & Order</button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="fruit-tea signature">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1627830884101-1e42e8f074c0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Mango Pomelo">
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-berry text-cream rounded-full text-xs font-bold">Popular</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-tea">Mango Pomelo Sago</h3>
+                            <span class="font-display text-xl font-bold text-caramel">450 ETB</span>
+                        </div>
+                        <p class="text-teaLight text-sm leading-relaxed mb-6">A refreshing tropical escape. Sweet mango purée, juicy pomelo sacs, and sago pearls in a light coconut base.</p>
+                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Customize & Order</button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="fruit-tea">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Mixed Fruit Tea">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-tea">Super Mixed Fruit Tea</h3>
+                            <span class="font-display text-xl font-bold text-caramel">400 ETB</span>
+                        </div>
+                        <p class="text-teaLight text-sm leading-relaxed mb-6">A vibrant medley of seasonal fruits brewed with premium jasmine green tea. Light, crisp, and invigorating.</p>
+                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Customize & Order</button>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="snacks">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Egg Tarts">
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-matcha text-cream rounded-full text-xs font-bold">Fresh Daily</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-display text-2xl font-bold text-tea">Freshly Baked Egg Tarts</h3>
+                            <span class="font-display text-xl font-bold text-caramel">150 ETB</span>
+                        </div>
+                        <p class="text-teaLight text-sm leading-relaxed mb-6">Flaky, buttery pastry shells filled with a smooth, creamy, and subtly sweet egg custard. The perfect pairing.</p>
+                        <button class="w-full bg-tea hover:bg-caramel text-cream py-3 rounded-xl font-bold transition-all">Add to Order</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-milk border-t border-caramel/20 pt-16 pb-8 relative z-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-8 h-8 rounded-full bg-caramel flex items-center justify-center text-white font-bold text-sm">LT</div>
+                <span class="font-display text-2xl font-bold text-tea">LONG TEA</span>
+            </div>
+            <p class="text-teaLight text-sm">© 2026 Long Tea Ethiopia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Category Filtering Logic
+        const buttons = document.querySelectorAll('.category-btn');
+        const items = document.querySelectorAll('.menu-item');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all
+                buttons.forEach(btn => btn.classList.remove('active'));
+                // Add active to clicked
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+
+                items.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category').includes(category)) {
+                        item.style.display = 'block';
+                        item.style.animation = 'float 0.5s ease-out';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
