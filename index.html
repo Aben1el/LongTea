@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Tea | Authentic Premium Bubble Tea in Addis Ababa</title>
+    <meta name="description" content="Experience luxury bubble tea in Addis Ababa. Premium loose-leaf teas, handmade pearls, and customizable flavors at Ambassador Mall.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C8A274',
+                        primaryHover: '#D4AF37',
+                        background: '#0A0A0A',
+                        surface: '#141414',
+                        textPrimary: '#F5F5F0',
+                        textSecondary: '#A1A1AA',
+                        matcha: '#8A9A5B',
+                        berry: '#D47A7E',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #F5F5F0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .glass-strong {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #C8A274 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(200, 162, 116, 0.15) 0%, transparent 50%);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C8A274;
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="smooth-scroll overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-6xl transition-all duration-500" id="navbar">
+        <div class="glass-strong rounded-full px-6 py-4 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-2 group">
+                <svg class="w-6 h-6 text-primary group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <span class="font-display text-xl font-bold tracking-wide text-textPrimary">LONG TEA</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-sm font-medium text-textSecondary hover:text-primary transition-colors duration-300">Home</a>
+                <a href="#menu" class="text-sm font-medium text-textSecondary hover:text-primary transition-colors duration-300">Menu</a>
+                <a href="#story" class="text-sm font-medium text-textSecondary hover:text-primary transition-colors duration-300">Our Story</a>
+                <a href="#locations" class="text-sm font-medium text-textSecondary hover:text-primary transition-colors duration-300">Locations</a>
+                <a href="#menu" class="bg-primary hover:bg-primaryHover text-background px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(200,162,116,0.4)]">Explore Menu</a>
+            </div>
+
+            <button class="md:hidden text-textPrimary" onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-background/95 backdrop-blur-2xl hidden flex-col items-center justify-center gap-8">
+        <a href="#home" onclick="toggleMobileMenu()" class="font-display text-3xl text-textPrimary hover:text-primary transition-colors">Home</a>
+        <a href="#menu" onclick="toggleMobileMenu()" class="font-display text-3xl text-textPrimary hover:text-primary transition-colors">Menu</a>
+        <a href="#story" onclick="toggleMobileMenu()" class="font-display text-3xl text-textPrimary hover:text-primary transition-colors">Our Story</a>
+        <a href="#locations" onclick="toggleMobileMenu()" class="font-display text-3xl text-textPrimary hover:text-primary transition-colors">Locations</a>
+        <a href="#menu" onclick="toggleMobileMenu()" class="mt-4 bg-primary text-background px-8 py-3 rounded-full text-lg font-semibold">Explore Menu</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 hero-gradient">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-slow"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-berry/10 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 1s;"></div>
+            
+            <!-- Floating Bubbles -->
+            <div class="absolute rounded-full bg-white/5 backdrop-blur-sm border border-white/10 w-16 h-16 animate-float" style="left: 10%; top: 20%;"></div>
+            <div class="absolute rounded-full bg-white/5 backdrop-blur-sm border border-white/10 w-20 h-20 animate-float" style="left: 70%; top: 60%; animation-delay: 2s;"></div>
+            <div class="absolute rounded-full bg-white/5 backdrop-blur-sm border border-white/10 w-12 h-12 animate-float" style="left: 80%; top: 30%; animation-delay: 3s;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
+                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.821 12.8l-3.354-1.935a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-textSecondary tracking-wide uppercase">Now Open at Ambassador Mall</span>
+                </div>
+                
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] mb-6">
+                    Your Tea.<br>
+                    <span class="text-gradient">Your Way.</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-textSecondary max-w-lg mx-auto md:mx-0 mb-8 leading-relaxed">
+                    Experience luxury bubble tea in Addis Ababa. Premium loose-leaf teas, richly textured milk, and handmade pearls crafted for those who seek indulgence in every detail.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#menu" class="group flex items-center justify-center gap-2 bg-primary hover:bg-primaryHover text-background px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(200,162,116,0.4)]">
+                        Explore the Menu
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                    <a href="#locations" class="flex items-center justify-center gap-2 glass hover:bg-white/10 text-textPrimary px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300">
+                        Find a Long Tea
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="relative flex justify-center items-center">
+                <div class="absolute w-80 h-80 md:w-[500px] md:h-[500px] bg-gradient-to-tr from-primary/30 to-berry/20 rounded-full blur-[80px]"></div>
+                <img src="https://images.unsplash.com/photo-1558855410-3112e2139405?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Premium Long Tea Bubble Tea with handmade pearls" 
+                     class="relative z-10 w-72 md:w-96 drop-shadow-2xl animate-float rounded-3xl">
+                <div class="absolute top-10 right-10 md:right-20 glass px-4 py-3 rounded-2xl z-20 animate-float" style="animation-delay: 1s;">
+                    <span class="text-2xl font-display font-bold text-primary">100%</span>
+                    <p class="text-xs text-textSecondary">Handmade Pearls</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section id="story" class="py-24 md:py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-20">
+                <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">Tea. Flavor. Texture. <span class="text-gradient">Moments.</span></h2>
+                <p class="text-lg md:text-xl text-textSecondary leading-relaxed">
+                    At Long Tea, we believe that tea is more than a beverage—it's a moment of calm, and a celebration of flavor. Inspired by centuries of tea culture and refined with a modern twist, each cup is a blend of artistry, taste, and elegance.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-surfaceHighlight flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-matcha" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-textPrimary">Premium Ingredients</h3>
+                    <p class="text-textSecondary leading-relaxed">Sourced loose-leaf teas and rich, textured milk for an authentic base.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-surfaceHighlight flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-berry" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-textPrimary">Crafted with Care</h3>
+                    <p class="text-textSecondary leading-relaxed">Handmade pearls, delicately chewy and infused with natural sweetness.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-surfaceHighlight flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-textPrimary">A Place to Connect</h3>
+                    <p class="text-textSecondary leading-relaxed">A welcoming environment designed for relaxation and community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 md:py-32 bg-surface/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold tracking-widest uppercase text-sm">Our Menu</span>
+                <h2 class="font-display text-4xl md:text-6xl font-bold mt-4 mb-6">Crafted for <span class="text-gradient">Indulgence</span></h2>
+                <p class="text-textSecondary max-w-2xl mx-auto">Every drink is a canvas. Choose your base, customize your sweetness, and add your favorite toppings.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="group relative glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1571328003758-4a3921661729?q=80&w=800&auto=format&fit=crop" 
+                             alt="Signature Boba Tea" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-medium text-textPrimary border border-white/10">Best Seller</span>
+                            <span class="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-medium text-textPrimary border border-white/10">Customizable</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="text-xs font-semibold text-primary uppercase tracking-wider">Brown Blend</span>
+                                <h3 class="font-display text-2xl font-bold text-textPrimary mt-1">Signature Boba Tea</h3>
+                            </div>
+                            <span class="font-display text-xl font-bold text-textPrimary">450 ETB</span>
+                        </div>
+                        <p class="text-textSecondary text-sm leading-relaxed mb-6">Our classic masterpiece. Premium black tea, rich creamy milk, and warm brown sugar handmade pearls.</p>
+                        <button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary hover:text-background text-textPrimary border border-white/10 hover:border-primary py-3 rounded-xl transition-all duration-300 font-medium">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            Customize & Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="group relative glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515823662972-da6a2e4d3112?q=80&w=800&auto=format&fit=crop" 
+                             alt="Sweet Matcha" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-medium text-textPrimary border border-white/10">Antioxidant Rich</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="text-xs font-semibold text-primary uppercase tracking-wider">Green Blend</span>
+                                <h3 class="font-display text-2xl font-bold text-textPrimary mt-1">Sweet Matcha</h3>
+                            </div>
+                            <span class="font-display text-xl font-bold text-textPrimary">450 ETB</span>
+                        </div>
+                        <p class="text-textSecondary text-sm leading-relaxed mb-6">Ceremonial grade matcha whisked to perfection, layered with fresh milk and a hint of natural sweetness.</p>
+                        <button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary hover:text-background text-textPrimary border border-white/10 hover:border-primary py-3 rounded-xl transition-all duration-300 font-medium">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            Customize & Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="group relative glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1627830884101-1e42e8f074c0?q=80&w=800&auto=format&fit=crop" 
+                             alt="Mango Pomelo Sago" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-medium text-textPrimary border border-white/10">Fruity</span>
+                            <span class="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-medium text-textPrimary border border-white/10">Refreshing</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="text-xs font-semibold text-primary uppercase tracking-wider">Pink Blend</span>
+                                <h3 class="font-display text-2xl font-bold text-textPrimary mt-1">Mango Pomelo Sago</h3>
+                            </div>
+                            <span class="font-display text-xl font-bold text-textPrimary">450 ETB</span>
+                        </div>
+                        <p class="text-textSecondary text-sm leading-relaxed mb-6">A refreshing tropical escape. Sweet mango purée, juicy pomelo sacs, and sago pearls in a light coconut base.</p>
+                        <button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary hover:text-background text-textPrimary border border-white/10 hover:border-primary py-3 rounded-xl transition-all duration-300 font-medium">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            Customize & Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="py-24 md:py-32 bg-surface/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold tracking-widest uppercase text-sm">Visit Us</span>
+                <h2 class="font-display text-4xl md:text-6xl font-bold mt-4 mb-6">Find Your <span class="text-gradient">Long Tea</span></h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="glass rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+                    <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-6">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                Ambassador Branch
+                            </div>
+                            <h3 class="font-display text-3xl font-bold mb-6 text-textPrimary">Long Tea | Ambassador Mall</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-textPrimary">4 Kilo, 3rd Floor</p>
+                                        <p class="text-textSecondary">Ambassador Mall, Addis Ababa, Ethiopia</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-textPrimary">Call Us</p>
+                                        <a href="tel:+251951075065" class="text-textSecondary hover:text-primary transition-colors">095 107 5065</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-textPrimary">Opening Hours</p>
+                                        <p class="text-textSecondary">Daily: 10:00 AM - 10:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center gap-2 bg-primary hover:bg-primaryHover text-background px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                                Get Directions
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="relative h-80 md:h-full min-h-[300px] rounded-2xl overflow-hidden border border-white/10 bg-surfaceHighlight group">
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Map location" 
+                                 class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="glass px-6 py-3 rounded-full flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span class="font-medium">View on Map</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-white/5 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="font-display text-2xl font-bold text-textPrimary">LONG TEA</span>
+                    </div>
+                    <p class="text-textSecondary max-w-sm leading-relaxed mb-6">
+                        Redefining bubble tea through elegance, balance, and timeless flavor. Crafted for those who seek indulgence in every detail.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background transition-all duration-300" aria-label="Instagram">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-display text-lg font-bold text-textPrimary mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home" class="text-textSecondary hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#menu" class="text-textSecondary hover:text-primary transition-colors">Menu</a></li>
+                        <li><a href="#story" class="text-textSecondary hover:text-primary transition-colors">Our Story</a></li>
+                        <li><a href="#locations" class="text-textSecondary hover:text-primary transition-colors">Locations</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display text-lg font-bold text-textPrimary mb-6">Contact</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-textSecondary">
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>3rd Floor, Ambassador Mall<br>4 Kilo, Addis Ababa, Ethiopia</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-textSecondary">
+                            <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <a href="tel:+251951075065" class="hover:text-primary transition-colors">095 107 5065</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-textSecondary text-sm">© 2026 Long Tea Ethiopia. All rights reserved.</p>
+                <p class="text-textSecondary/60 text-xs">Designed with premium UI/UX standards.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('w-[90%]', 'max-w-5xl');
+                navbar.classList.remove('w-[95%]', 'max-w-6xl');
+            } else {
+                navbar.classList.remove('w-[90%]', 'max-w-5xl');
+                navbar.classList.add('w-[95%]', 'max-w-6xl');
+            }
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
