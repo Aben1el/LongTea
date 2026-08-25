@@ -82,12 +82,12 @@
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
                 
-                <!-- Item 1 -->
+                <!-- Item 1: Signature Boba -->
                 <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="milk-tea signature">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="images/boba.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Signature Boba">
+                    <div class="relative h-80 bg-white flex items-center justify-center p-6 rounded-t-3xl">
+                        <img src="images/boba.jpg" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Signature Boba">
                         <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-caramel text-cream rounded-full text-xs font-bold">Signature</span>
+                            <span class="px-3 py-1 bg-caramel text-cream rounded-full text-xs font-bold shadow-md">Signature</span>
                         </div>
                     </div>
                     <div class="p-6">
@@ -100,10 +100,10 @@
                     </div>
                 </div>
 
-                <!-- Item 2 -->
+                <!-- Item 2: Sweet Matcha -->
                 <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="milk-tea">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="images/matcha.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Sweet Matcha">
+                    <div class="relative h-80 bg-white flex items-center justify-center p-6 rounded-t-3xl">
+                        <img src="images/matchcha.jpg" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sweet Matcha">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
@@ -115,12 +115,12 @@
                     </div>
                 </div>
 
-                <!-- Item 3 -->
+                <!-- Item 3: Mango Pomelo -->
                 <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="fruit-tea signature">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="images/mango.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Mango Pomelo">
+                    <div class="relative h-80 bg-white flex items-center justify-center p-6 rounded-t-3xl">
+                        <img src="images/mango.jpg" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Mango Pomelo">
                         <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-berry text-cream rounded-full text-xs font-bold">Popular</span>
+                            <span class="px-3 py-1 bg-berry text-cream rounded-full text-xs font-bold shadow-md">Popular</span>
                         </div>
                     </div>
                     <div class="p-6">
@@ -133,10 +133,10 @@
                     </div>
                 </div>
 
-                <!-- Item 4 -->
+                <!-- Item 4: Mixed Fruit Tea -->
                 <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="fruit-tea">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Mixed Fruit Tea">
+                    <div class="relative h-80 bg-white flex items-center justify-center p-6 rounded-t-3xl">
+                        <img src="images/mango.jpg" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Mixed Fruit Tea">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
@@ -148,12 +148,12 @@
                     </div>
                 </div>
 
-                <!-- Item 5 -->
+                <!-- Item 5: Egg Tarts -->
                 <div class="menu-item glass rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group" data-category="snacks">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Egg Tarts">
+                    <div class="relative h-80 bg-white flex items-center justify-center p-6 rounded-t-3xl">
+                        <img src="images/boba.jpg" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Egg Tarts">
                         <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-matcha text-cream rounded-full text-xs font-bold">Fresh Daily</span>
+                            <span class="px-3 py-1 bg-matcha text-cream rounded-full text-xs font-bold shadow-md">Fresh Daily</span>
                         </div>
                     </div>
                     <div class="p-6">
@@ -188,9 +188,7 @@
 
         buttons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all
                 buttons.forEach(btn => btn.classList.remove('active'));
-                // Add active to clicked
                 button.classList.add('active');
 
                 const category = button.getAttribute('data-category');
@@ -198,7 +196,6 @@
                 items.forEach(item => {
                     if (category === 'all' || item.getAttribute('data-category').includes(category)) {
                         item.style.display = 'block';
-                        item.style.animation = 'float 0.5s ease-out';
                     } else {
                         item.style.display = 'none';
                     }
