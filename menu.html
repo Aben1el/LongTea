@@ -68,7 +68,6 @@
             font-weight: 400;
         }
         
-        /* Floating Product Cards */
         .product-card {
             background: #EDE7DD;
             border-radius: 12px;
@@ -91,6 +90,7 @@
             border-radius: 12px 12px 0 0;
             position: relative;
             overflow: hidden;
+            min-height: 280px;
         }
         
         .product-card .img-wrap img {
@@ -102,29 +102,6 @@
         
         .product-card:hover .img-wrap img {
             transform: scale(1.08) translateY(-5px);
-        }
-        
-        /* Buttons */
-        .btn-primary {
-            background: #F5F0E8;
-            color: #3E2723;
-            border-radius: 50px;
-            padding: 0.85rem 2rem;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-        }
-        
-        .btn-primary:hover {
-            background: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         
         .btn-outline-dark {
@@ -160,7 +137,6 @@
             transform: translateY(-2px);
         }
         
-        /* Category Pills */
         .cat-pill {
             background: #A67C52;
             color: #F5F0E8;
@@ -178,7 +154,6 @@
             background: #3E2723;
         }
         
-        /* Reveal Animation */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -188,30 +163,6 @@
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
-        }
-        
-        /* Floating Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-        }
-        
-        .animate-float {
-            animation: float 5s ease-in-out infinite;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #F5F0E8;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #A67C52;
-            border-radius: 4px;
         }
         
         .scroll-x {
@@ -242,17 +193,21 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-6 bg-cream/90 backdrop-blur-md border-b border-beige/50">
+    <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-5 bg-cream/90 backdrop-blur-md border-b border-beige/50">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="index.html" class="font-display text-2xl font-bold text-darkBrown tracking-tight">
-                Long Tea
+            <a href="index.html" class="flex items-center gap-3">
+                <svg class="h-10 w-auto" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="10" width="40" height="40" rx="4" fill="#3E2723" stroke="#3E2723" stroke-width="2"/>
+                    <text x="25" y="38" font-family="serif" font-size="28" font-weight="bold" fill="#F5F0E8" text-anchor="middle">隆</text>
+                    <text x="110" y="38" font-family="serif" font-size="18" font-weight="600" fill="#3E2723" text-anchor="middle" letter-spacing="2">LONG TEA</text>
+                </svg>
             </a>
             
             <div class="hidden md:flex items-center gap-12">
                 <a href="index.html" class="text-brown/70 font-medium text-sm tracking-wide hover:text-darkBrown transition-colors">Home</a>
                 <a href="menu.html" class="text-darkBrown font-semibold text-sm tracking-wide">Menu</a>
                 <a href="index.html#story" class="text-brown/70 font-medium text-sm tracking-wide hover:text-darkBrown transition-colors">Our Story</a>
-                <a href="index.html#locations" class="text-brown/70 font-medium text-sm tracking-wide hover:text-darkBrown transition-colors">Locations</a>
+                <a href="stores.html" class="text-brown/70 font-medium text-sm tracking-wide hover:text-darkBrown transition-colors">Our Stores</a>
             </div>
             
             <div class="flex items-center gap-6">
@@ -274,13 +229,14 @@
         <a href="index.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Home</a>
         <a href="menu.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Menu</a>
         <a href="index.html#story" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Our Story</a>
-        <a href="index.html#locations" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Locations</a>
+        <a href="stores.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Our Stores</a>
     </div>
 
     <!-- Header -->
     <section class="pt-32 pb-12 text-center">
         <div class="max-w-7xl mx-auto px-6 reveal active">
-            <h1 class="font-display text-5xl md:text-6xl font-bold text-darkBrown mb-4">
+            <p class="text-script text-3xl text-caramel mb-4">drinks</p>
+            <h1 class="font-display text-5xl md:text-7xl font-bold text-darkBrown mb-4">
                 Our <span class="text-caramel italic">Menu</span>
             </h1>
             <p class="text-brown/70 text-lg max-w-2xl mx-auto">Find your flavor. Make it yours.</p>
@@ -294,28 +250,28 @@
             <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 <div class="product-card p-6 text-center reveal">
                     <div class="img-wrap mb-4" style="padding: 1rem;">
-                        <img src="images/boba.jpg" class="w-full h-48 object-contain animate-float" alt="Signature Boba">
+                        <img src="https://images.unsplash.com/photo-1571328003758-4a3921661729?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-contain animate-float" alt="Signature Boba">
                     </div>
                     <h3 class="font-display text-xl font-bold text-darkBrown">Signature Boba Tea</h3>
                     <p class="text-caramel font-bold mt-2">450 / 560 ETB</p>
                 </div>
                 <div class="product-card p-6 text-center reveal" style="transition-delay: 0.1s">
                     <div class="img-wrap mb-4" style="padding: 1rem;">
-                        <img src="images/boba.jpg" class="w-full h-48 object-contain animate-float" style="animation-delay: 0.5s;" alt="Brown Sugar Boba">
+                        <img src="https://images.unsplash.com/photo-1558855410-3112e2139405?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-contain animate-float" style="animation-delay: 0.5s;" alt="Brown Sugar Boba">
                     </div>
                     <h3 class="font-display text-xl font-bold text-darkBrown">Brown Sugar Boba Milk</h3>
                     <p class="text-caramel font-bold mt-2">450 / 560 ETB</p>
                 </div>
                 <div class="product-card p-6 text-center reveal" style="transition-delay: 0.2s">
                     <div class="img-wrap mb-4" style="padding: 1rem;">
-                        <img src="images/mango.jpg" class="w-full h-48 object-contain animate-float" style="animation-delay: 1s;" alt="Mango Pomelo">
+                        <img src="https://images.unsplash.com/photo-1627830884101-1e42e8f074c0?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-contain animate-float" style="animation-delay: 1s;" alt="Mango Pomelo">
                     </div>
                     <h3 class="font-display text-xl font-bold text-darkBrown">Mango Pomelo Sago</h3>
                     <p class="text-caramel font-bold mt-2">630 ETB</p>
                 </div>
                 <div class="product-card p-6 text-center reveal" style="transition-delay: 0.3s">
                     <div class="img-wrap mb-4" style="padding: 1rem;">
-                        <img src="images/matcha.jpg" class="w-full h-48 object-contain animate-float" style="animation-delay: 1.5s;" alt="Mixed Fruit">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=600&auto=format&fit=crop" class="w-full h-48 object-contain animate-float" style="animation-delay: 1.5s;" alt="Mixed Fruit">
                     </div>
                     <h3 class="font-display text-xl font-bold text-darkBrown">Super Mixed Fruit Tea</h3>
                     <p class="text-caramel font-bold mt-2">600 ETB</p>
@@ -329,7 +285,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex gap-3 justify-center mb-4 flex-wrap">
                 <button onclick="filterCategory('all')" class="cat-pill active" data-category="all">ALL</button>
-                <button onclick="filterCategory('drinks')" class="cat-pill" data-category="drinks"> DRINKS</button>
+                <button onclick="filterCategory('drinks')" class="cat-pill" data-category="drinks">🧋 DRINKS</button>
                 <button onclick="filterCategory('food')" class="cat-pill" data-category="food">🧇 FOOD</button>
             </div>
             
@@ -359,7 +315,7 @@
                 <!-- BOBA & MILK TEA -->
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Signature Boba">
+                        <img src="https://images.unsplash.com/photo-1571328003758-4a3921661729?q=80&w=600&auto=format&fit=crop" alt="Signature Boba Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Signature Boba Tea</h3>
@@ -369,7 +325,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Brown Sugar Boba">
+                        <img src="https://images.unsplash.com/photo-1558855410-3112e2139405?q=80&w=600&auto=format&fit=crop" alt="Brown Sugar Boba Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Brown Sugar Boba Milk Tea</h3>
@@ -379,7 +335,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Sweet Azuki">
+                        <img src="https://images.unsplash.com/photo-1594489670376-3f6974167c96?q=80&w=600&auto=format&fit=crop" alt="Sweet Azuki Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Sweet Azuki Milk Tea</h3>
@@ -389,7 +345,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Coconut Jelly">
+                        <img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?q=80&w=600&auto=format&fit=crop" alt="Coconut Jelly Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Coconut Jelly Milk Tea</h3>
@@ -399,7 +355,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Silky Pudding">
+                        <img src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=600&auto=format&fit=crop" alt="Silky Pudding Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Silky Pudding Milk Tea</h3>
@@ -409,7 +365,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Jasmine Boba">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600&auto=format&fit=crop" alt="Jasmine Boba Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Jasmine Boba Milk Tea</h3>
@@ -419,7 +375,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Oolong Boba">
+                        <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=600&auto=format&fit=crop" alt="Oolong Boba Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Oolong Boba Milk Tea</h3>
@@ -429,7 +385,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Da Hong Pao">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600&auto=format&fit=crop" alt="Da Hong Pao Boba Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Da Hong Pao Boba Milk Tea</h3>
@@ -439,7 +395,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/matcha.jpg" alt="Matcha Milk">
+                        <img src="https://images.unsplash.com/photo-1515823662972-da6a2e4d3112?q=80&w=600&auto=format&fit=crop" alt="Matcha Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Matcha Milk Tea</h3>
@@ -449,7 +405,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Chocolate Milk">
+                        <img src="https://images.unsplash.com/photo-1572490172532-62d70f78e034?q=80&w=600&auto=format&fit=crop" alt="Chocolate Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Chocolate Milk Tea</h3>
@@ -459,7 +415,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="boba">
                     <div class="img-wrap">
-                        <img src="images/matcha.jpg" alt="Avocado Coconut">
+                        <img src="https://images.unsplash.com/photo-1626074353765-517a683e40d9?q=80&w=600&auto=format&fit=crop" alt="Avocado Coconut Milk Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Avocado Coconut Milk Tea</h3>
@@ -470,7 +426,7 @@
                 <!-- PURE TEA -->
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="pure-tea">
                     <div class="img-wrap">
-                        <img src="images/matcha.jpg" alt="Jasmine Foam">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600&auto=format&fit=crop" alt="Jasmine Tea with Milk Foam">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Jasmine Tea with Milk Foam</h3>
@@ -480,7 +436,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="pure-tea">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Black Tea Foam">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600&auto=format&fit=crop" alt="Chinese Black Tea with Milk Foam">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Chinese Black Tea with Milk Foam</h3>
@@ -490,7 +446,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="pure-tea">
                     <div class="img-wrap">
-                        <img src="images/matcha.jpg" alt="Jasmine Green">
+                        <img src="https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?q=80&w=600&auto=format&fit=crop" alt="Jasmine Green Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Jasmine Green Tea</h3>
@@ -500,7 +456,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="pure-tea">
                     <div class="img-wrap">
-                        <img src="images/matcha.jpg" alt="Tieguanyin">
+                        <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=600&auto=format&fit=crop" alt="Tieguanyin Oolong Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Tieguanyin Oolong Tea</h3>
@@ -510,7 +466,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="pure-tea">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Da Hong Pao Black">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600&auto=format&fit=crop" alt="Da Hong Pao Black Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Da Hong Pao Black Tea</h3>
@@ -520,7 +476,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="pure-tea">
                     <div class="img-wrap">
-                        <img src="images/matcha.jpg" alt="Tieguanyin Foam">
+                        <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=600&auto=format&fit=crop" alt="Tieguanyin Oolong Tea with Milk Foam">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Tieguanyin Oolong Tea with Milk Foam</h3>
@@ -530,7 +486,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="pure-tea">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Da Hong Pao Foam">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600&auto=format&fit=crop" alt="Da Hong Pao Black Tea with Milk Foam">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Da Hong Pao Black Tea with Milk Foam</h3>
@@ -541,7 +497,7 @@
                 <!-- FRUIT TEA -->
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="fruit-tea">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Mixed Fruit">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=600&auto=format&fit=crop" alt="Super Mixed Fruit Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Super Mixed Fruit Tea</h3>
@@ -551,7 +507,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="fruit-tea">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Passion Orange">
+                        <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=600&auto=format&fit=crop" alt="Passionfruit Orange Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Passionfruit Orange Tea</h3>
@@ -561,7 +517,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="fruit-tea">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Strawberry Lemon">
+                        <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=600&auto=format&fit=crop" alt="Strawberry Lemon Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Strawberry Lemon Tea</h3>
@@ -571,7 +527,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="fruit-tea">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Lemon Black">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600&auto=format&fit=crop" alt="Lemon Black Tea">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Lemon Black Tea</h3>
@@ -582,7 +538,7 @@
                 <!-- SPECIALTY DRINKS -->
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="specialty">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Mango Pomelo">
+                        <img src="https://images.unsplash.com/photo-1627830884101-1e42e8f074c0?q=80&w=600&auto=format&fit=crop" alt="Mango Pomelo Sago">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Mango Pomelo Sago</h3>
@@ -592,7 +548,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="specialty">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Lemon Yakult">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600&auto=format&fit=crop" alt="Lemon Yakult">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Lemon Yakult</h3>
@@ -602,7 +558,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="specialty">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Peach Yakult">
+                        <img src="https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=600&auto=format&fit=crop" alt="Peach Yakult">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Peach Yakult</h3>
@@ -612,7 +568,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="specialty">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Strawberry Yakult">
+                        <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=600&auto=format&fit=crop" alt="Strawberry Yakult">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Strawberry Yakult</h3>
@@ -623,7 +579,7 @@
                 <!-- SMOOTHIES & SLUSHIES -->
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="smoothies">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Mango Smoothie">
+                        <img src="https://images.unsplash.com/photo-1623079859476-5c6eb3874dc7?q=80&w=600&auto=format&fit=crop" alt="Mango Smoothie">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Mango Smoothie</h3>
@@ -633,7 +589,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="smoothies">
                     <div class="img-wrap">
-                        <img src="images/matcha.jpg" alt="Avocado Milkshake">
+                        <img src="https://images.unsplash.com/photo-1626074353765-517a683e40d9?q=80&w=600&auto=format&fit=crop" alt="Avocado Milkshake">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Avocado Milkshake</h3>
@@ -643,7 +599,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="smoothies">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Strawberry Smoothie">
+                        <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?q=80&w=600&auto=format&fit=crop" alt="Strawberry Smoothie">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Strawberry Smoothie</h3>
@@ -653,7 +609,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="smoothies">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Grape Smoothie">
+                        <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?q=80&w=600&auto=format&fit=crop" alt="Grape Smoothie">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Grape Smoothie</h3>
@@ -663,7 +619,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="smoothies">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Chocolate Milkshake">
+                        <img src="https://images.unsplash.com/photo-1572490172532-62d70f78e034?q=80&w=600&auto=format&fit=crop" alt="Chocolate Milkshake">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Chocolate Milkshake</h3>
@@ -673,7 +629,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="smoothies">
                     <div class="img-wrap">
-                        <img src="images/matcha.jpg" alt="Matcha Milkshake">
+                        <img src="https://images.unsplash.com/photo-1515823662972-da6a2e4d3112?q=80&w=600&auto=format&fit=crop" alt="Matcha Milkshake">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Matcha Milkshake</h3>
@@ -684,7 +640,7 @@
                 <!-- COFFEE -->
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="coffee">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Coconut Latte">
+                        <img src="https://images.unsplash.com/photo-1461023058943-48dbf9456e20?q=80&w=600&auto=format&fit=crop" alt="Fresh Coconut Latte">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Fresh Coconut Latte</h3>
@@ -694,7 +650,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="coffee">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Oat Latte">
+                        <img src="https://images.unsplash.com/photo-1570968992193-fd258a9c6f3f?q=80&w=600&auto=format&fit=crop" alt="Oat Milk Latte">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Oat Milk Latte</h3>
@@ -704,7 +660,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="coffee">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Cappuccino">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=600&auto=format&fit=crop" alt="Cappuccino">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Cappuccino</h3>
@@ -714,7 +670,7 @@
 
                 <div class="product-card menu-item" data-category="drinks" data-subcategory="coffee">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Americano">
+                        <img src="https://images.unsplash.com/photo-1551030173-122aabc4489c?q=80&w=600&auto=format&fit=crop" alt="Americano">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Americano</h3>
@@ -725,7 +681,7 @@
                 <!-- FOOD: BUBBLE WAFFLES -->
                 <div class="product-card menu-item" data-category="food" data-subcategory="waffles">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Fruit Waffle">
+                        <img src="https://images.unsplash.com/photo-1562331498-5f908f0a9b5b?q=80&w=600&auto=format&fit=crop" alt="Fruit Bubble Waffle with Ice Cream">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Fruit Bubble Waffle with Ice Cream</h3>
@@ -735,7 +691,7 @@
 
                 <div class="product-card menu-item" data-category="food" data-subcategory="waffles">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Boba Waffle">
+                        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=600&auto=format&fit=crop" alt="Boba Bubble Waffle with Ice Cream">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Boba Bubble Waffle with Ice Cream</h3>
@@ -746,7 +702,7 @@
                 <!-- FOOD: ICE CREAM & DESSERTS -->
                 <div class="product-card menu-item" data-category="food" data-subcategory="ice-cream">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Chocolate Cone">
+                        <img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?q=80&w=600&auto=format&fit=crop" alt="Chocolate Ice Cream Cone">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Chocolate Ice Cream Cone</h3>
@@ -756,7 +712,7 @@
 
                 <div class="product-card menu-item" data-category="food" data-subcategory="ice-cream">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Milk Cone">
+                        <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?q=80&w=600&auto=format&fit=crop" alt="Milk Ice Cream Cone">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Milk Ice Cream Cone</h3>
@@ -766,7 +722,7 @@
 
                 <div class="product-card menu-item" data-category="food" data-subcategory="ice-cream">
                     <div class="img-wrap">
-                        <img src="images/mango.jpg" alt="Fruit Sundae">
+                        <img src="https://images.unsplash.com/photo-1488900128323-21503983a07e?q=80&w=600&auto=format&fit=crop" alt="Fruit Sundae">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Fruit Sundae</h3>
@@ -776,7 +732,7 @@
 
                 <div class="product-card menu-item" data-category="food" data-subcategory="ice-cream">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Chocolate Sundae">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=600&auto=format&fit=crop" alt="Chocolate Sundae">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Chocolate Sundae</h3>
@@ -786,7 +742,7 @@
 
                 <div class="product-card menu-item" data-category="food" data-subcategory="ice-cream">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Oreo Sundae">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=600&auto=format&fit=crop" alt="Oreo Sundae">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Oreo Sundae</h3>
@@ -796,7 +752,7 @@
 
                 <div class="product-card menu-item" data-category="food" data-subcategory="ice-cream">
                     <div class="img-wrap">
-                        <img src="images/boba.jpg" alt="Boba Sundae">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=600&auto=format&fit=crop" alt="Boba Sundae">
                     </div>
                     <div class="p-5">
                         <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Boba Sundae</h3>
@@ -813,7 +769,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
-                    <span class="font-display text-3xl font-bold block mb-4">Long Tea</span>
+                    <svg class="h-10 w-auto mb-4" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="10" width="40" height="40" rx="4" fill="#F5F0E8" stroke="#F5F0E8" stroke-width="2"/>
+                        <text x="25" y="38" font-family="serif" font-size="28" font-weight="bold" fill="#3E2723" text-anchor="middle">隆</text>
+                        <text x="110" y="38" font-family="serif" font-size="18" font-weight="600" fill="#F5F0E8" text-anchor="middle" letter-spacing="2">LONG TEA</text>
+                    </svg>
                     <p class="text-cream/70 max-w-sm leading-relaxed">
                         Premium bubble tea crafted with love, tradition, and innovation. Every sip is a moment worth savoring.
                     </p>
@@ -824,7 +784,7 @@
                         <li><a href="index.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Home</a></li>
                         <li><a href="menu.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Menu</a></li>
                         <li><a href="index.html#story" class="text-cream/70 hover:text-caramel transition-colors text-sm">Our Story</a></li>
-                        <li><a href="index.html#locations" class="text-cream/70 hover:text-caramel transition-colors text-sm">Locations</a></li>
+                        <li><a href="stores.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Our Stores</a></li>
                     </ul>
                 </div>
                 <div>
@@ -841,23 +801,18 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
         }
         
-        // Scroll to Top
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // Filter Category
         function filterCategory(category) {
-            // Update buttons
             document.querySelectorAll('[data-category]').forEach(btn => {
                 btn.classList.remove('active');
                 if(btn.getAttribute('data-category') === category) {
@@ -865,7 +820,6 @@
                 }
             });
             
-            // Show/hide subcategories
             document.getElementById('drinkSubcats').classList.add('hidden');
             document.getElementById('foodSubcats').classList.add('hidden');
             
@@ -875,7 +829,6 @@
                 document.getElementById('foodSubcats').classList.remove('hidden');
             }
             
-            // Filter items
             const items = document.querySelectorAll('.menu-item');
             items.forEach(item => {
                 if(category === 'all') {
@@ -891,7 +844,6 @@
             });
         }
         
-        // Filter Subcategory
         function filterSubcategory(subcategory) {
             const items = document.querySelectorAll('.menu-item');
             items.forEach(item => {
@@ -904,7 +856,6 @@
             });
         }
         
-        // Scroll Reveal Animation
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
