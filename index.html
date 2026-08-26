@@ -59,14 +59,13 @@
             overflow-x: hidden;
         }
         
-        /* Hero Background - Simpler, cleaner */
+        /* Hero Background */
         .hero-cinematic {
             position: relative;
             background: linear-gradient(135deg, #D4C4B0 0%, #C4B5A0 50%, #B8A88A 100%);
             overflow: hidden;
         }
         
-        /* Subtle light ray */
         .hero-cinematic::before {
             content: '';
             position: absolute;
@@ -108,7 +107,6 @@
             font-weight: 400;
         }
         
-        /* Floating Product Cards */
         .product-card {
             background: #EDE7DD;
             border-radius: 12px;
@@ -144,7 +142,6 @@
             transform: scale(1.08) translateY(-5px);
         }
         
-        /* Floating image style */
         .float-image {
             position: relative;
             filter: drop-shadow(0 20px 40px rgba(62, 39, 35, 0.25));
@@ -156,20 +153,6 @@
             filter: drop-shadow(0 30px 50px rgba(62, 39, 35, 0.3));
         }
         
-        /* Store Cards */
-        .store-card {
-            background: #EDE7DD;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        
-        .store-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 50px rgba(62, 39, 35, 0.15);
-        }
-        
-        /* Buttons */
         .btn-primary {
             background: #F5F0E8;
             color: #3E2723;
@@ -244,7 +227,6 @@
             transform: translateY(-2px);
         }
         
-        /* Category Pills */
         .cat-pill {
             background: #A67C52;
             color: #F5F0E8;
@@ -262,7 +244,6 @@
             background: #3E2723;
         }
         
-        /* Reveal Animation */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -274,7 +255,6 @@
             transform: translateY(0);
         }
         
-        /* Floating Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -284,7 +264,6 @@
             animation: float 5s ease-in-out infinite;
         }
         
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -325,14 +304,19 @@
     <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-5 bg-gradient-to-b from-darkBrown/10 to-transparent">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <a href="#home" class="flex items-center gap-3">
-                <img src="images/long-tea-logo.png" alt="Long Tea" class="h-8 md:h-10 w-auto">
+                <!-- Long Tea Logo SVG -->
+                <svg class="h-10 w-auto" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="10" width="40" height="40" rx="4" fill="#F5F0E8" stroke="#F5F0E8" stroke-width="2"/>
+                    <text x="25" y="38" font-family="serif" font-size="28" font-weight="bold" fill="#3E2723" text-anchor="middle">隆</text>
+                    <text x="110" y="38" font-family="serif" font-size="18" font-weight="600" fill="#F5F0E8" text-anchor="middle" letter-spacing="2">LONG TEA</text>
+                </svg>
             </a>
             
             <div class="hidden md:flex items-center gap-12">
                 <a href="#home" class="text-cream font-semibold text-sm tracking-wide drop-shadow-md hover:text-white transition-colors">Home</a>
                 <a href="menu.html" class="text-cream/80 font-medium text-sm tracking-wide drop-shadow-md hover:text-white transition-colors">Menu</a>
                 <a href="#story" class="text-cream/80 font-medium text-sm tracking-wide drop-shadow-md hover:text-white transition-colors">Our Story</a>
-                <a href="#stores" class="text-cream/80 font-medium text-sm tracking-wide drop-shadow-md hover:text-white transition-colors">Our Stores</a>
+                <a href="stores.html" class="text-cream/80 font-medium text-sm tracking-wide drop-shadow-md hover:text-white transition-colors">Our Stores</a>
             </div>
             
             <div class="flex items-center gap-6">
@@ -354,10 +338,10 @@
         <a href="#home" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Home</a>
         <a href="menu.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Menu</a>
         <a href="#story" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Our Story</a>
-        <a href="#stores" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Our Stores</a>
+        <a href="stores.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Our Stores</a>
     </div>
 
-    <!-- Hero Section - Shorter, Simpler, Cleaner -->
+    <!-- Hero Section -->
     <section id="home" class="hero-cinematic relative w-full" style="min-height: 65vh; max-height: 550px;">
         <div class="hero-grain"></div>
         
@@ -366,14 +350,12 @@
                 
                 <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-center">
                     
-                    <!-- LEFT TEXT -->
                     <div class="reveal active text-center lg:text-right order-2 lg:order-1">
                         <h1 class="text-editorial text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-cream leading-[0.95] drop-shadow-xl">
                             SIP<br>INTO
                         </h1>
                     </div>
                     
-                    <!-- CENTER DRINK -->
                     <div class="relative flex flex-col items-center justify-center order-1 lg:order-2">
                         <div class="relative">
                             <img src="images/boba.jpg" 
@@ -387,7 +369,6 @@
                         <div class="pedestal w-32 md:w-48 lg:w-56 h-10 md:h-12 rounded-t-sm mt-2 relative z-10"></div>
                     </div>
                     
-                    <!-- RIGHT TEXT -->
                     <div class="reveal active text-center lg:text-left order-3">
                         <h1 class="text-editorial text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-cream leading-[0.95] drop-shadow-xl">
                             SOME<br>THING
@@ -398,7 +379,6 @@
                     </div>
                 </div>
                 
-                <!-- Bottom: Description + CTAs -->
                 <div class="reveal active mt-8 md:mt-10 flex flex-col md:flex-row items-center justify-between gap-4 max-w-3xl mx-auto">
                     <p class="text-cream/80 text-sm md:text-base max-w-md text-center md:text-left leading-relaxed">
                         Premium bubble tea crafted with handmade pearls, fresh ingredients, and endless customization at Ambassador Mall.
@@ -408,9 +388,9 @@
                             Explore Menu
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
-                        <button onclick="scrollToSection('stores')" class="btn-outline-light">
+                        <a href="stores.html" class="btn-outline-light">
                             Find a Store
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -418,7 +398,7 @@
     </section>
 
     <!-- Menu Preview Section -->
-    <section id="menu" class="section-lux bg-warmWhite">
+    <section id="menu" class="section-lux bg-ivory">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex items-end justify-between mb-12 reveal">
                 <div>
@@ -506,10 +486,9 @@
     </section>
 
     <!-- Brand Story -->
-    <section id="story" class="section-lux bg-cream">
+    <section id="story" class="section-lux bg-beige">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Images Grid -->
                 <div class="grid grid-cols-2 gap-8 reveal">
                     <div class="space-y-8">
                         <img src="images/matcha.jpg" alt="Matcha Tea" class="float-image w-full object-cover aspect-[3/4] rounded-lg">
@@ -531,7 +510,6 @@
                     </div>
                 </div>
                 
-                <!-- Text Content -->
                 <div class="reveal">
                     <p class="text-script text-3xl text-caramel mb-4">Our Story</p>
                     <h2 class="font-display text-5xl md:text-6xl font-bold text-darkBrown mb-6 leading-tight">
@@ -564,74 +542,8 @@
         </div>
     </section>
 
-    <!-- Our Stores Section -->
-    <section id="stores" class="section-lux bg-warmWhite">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <p class="text-script text-3xl text-caramel mb-4">Locations</p>
-                <h2 class="font-display text-5xl md:text-6xl font-bold text-darkBrown mb-4">
-                    Our <span class="text-caramel italic">Stores</span>
-                </h2>
-                <p class="text-brown/70 text-lg max-w-2xl mx-auto">Find your nearest Long Tea location</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Ambassador Mall Branch -->
-                <div class="store-card reveal">
-                    <div class="p-8">
-                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-caramel/20 text-caramel text-sm font-bold mb-4">
-                             Main Branch
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-darkBrown mb-4">Long Tea<br>Ambassador Mall</h3>
-                        
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-base">📍</div>
-                                <div>
-                                    <p class="font-semibold text-darkBrown text-sm">Address</p>
-                                    <p class="text-brown/70 text-sm">4 Kilo, 3rd Floor<br>Ambassador Mall, Addis Ababa</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-base">📞</div>
-                                <div>
-                                    <p class="font-semibold text-darkBrown text-sm">Phone</p>
-                                    <a href="tel:+251951075065" class="text-brown/70 text-sm hover:text-caramel transition-colors">095 107 5065</a>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-base">🕐</div>
-                                <div>
-                                    <p class="font-semibold text-darkBrown text-sm">Hours</p>
-                                    <p class="text-brown/70 text-sm">Daily: 10:00 AM - 10:00 PM</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="btn-outline-dark w-full text-center">
-                            Get Directions
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Additional branches can be added here as they become available -->
-                <!-- Placeholder for future branches -->
-                <div class="store-card reveal" style="transition-delay: 0.1s">
-                    <div class="p-8 flex flex-col items-center justify-center text-center h-full">
-                        <div class="w-20 h-20 rounded-full bg-beige flex items-center justify-center text-4xl mb-4"></div>
-                        <h3 class="font-display text-xl font-bold text-darkBrown mb-2">More Locations Coming Soon</h3>
-                        <p class="text-brown/70 text-sm mb-4">We're expanding! Check back soon for new Long Tea locations across Addis Ababa.</p>
-                        <a href="#story" class="btn-solid-dark">
-                            Our Story
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- New Drink Promotion -->
-    <section class="section-lux bg-peach/40 relative overflow-hidden">
+    <section class="section-lux bg-peach/30 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal">
@@ -678,7 +590,7 @@
     </section>
 
     <!-- Why Long Tea -->
-    <section class="section-lux bg-warmWhite">
+    <section class="section-lux bg-ivory">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-5 gap-12 items-center">
                 <div class="lg:col-span-2 reveal">
@@ -693,7 +605,7 @@
                 </div>
                 
                 <div class="lg:col-span-3 space-y-6 reveal">
-                    <div class="flex gap-6 items-start group bg-beige/30 p-6 rounded-lg">
+                    <div class="flex gap-6 items-start group bg-beige/50 p-6 rounded-lg">
                         <div class="w-16 h-16 rounded-full bg-caramel/20 flex items-center justify-center text-2xl flex-shrink-0">🍵</div>
                         <div>
                             <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Premium Tea Base</h3>
@@ -701,7 +613,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex gap-6 items-start group bg-beige/30 p-6 rounded-lg">
+                    <div class="flex gap-6 items-start group bg-beige/50 p-6 rounded-lg">
                         <div class="w-16 h-16 rounded-full bg-peach/30 flex items-center justify-center text-2xl flex-shrink-0"></div>
                         <div>
                             <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Handmade Daily</h3>
@@ -709,7 +621,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex gap-6 items-start group bg-beige/30 p-6 rounded-lg">
+                    <div class="flex gap-6 items-start group bg-beige/50 p-6 rounded-lg">
                         <div class="w-16 h-16 rounded-full bg-matcha/20 flex items-center justify-center text-2xl flex-shrink-0">🎨</div>
                         <div>
                             <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Fully Customizable</h3>
@@ -721,12 +633,37 @@
         </div>
     </section>
 
+    <!-- Final CTA -->
+    <section class="section-lux bg-cream">
+        <div class="max-w-5xl mx-auto px-6 text-center reveal">
+            <p class="text-script text-3xl text-caramel mb-4">Ready?</p>
+            <h2 class="font-display text-5xl md:text-7xl font-bold text-darkBrown mb-6">
+                Ready to <span class="italic text-caramel">Sip?</span>
+            </h2>
+            <p class="text-lg text-brown/70 mb-10 max-w-2xl mx-auto">
+                Visit us at Ambassador Mall or explore our full menu to discover your perfect Long Tea creation.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="menu.html" class="btn-solid-dark">
+                    Order Now →
+                </a>
+                <a href="stores.html" class="btn-outline-dark">
+                    Find Location
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-darkBrown text-cream py-16">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
-                    <img src="images/long-tea-logo.png" alt="Long Tea" class="h-10 w-auto mb-4">
+                    <svg class="h-10 w-auto mb-4" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="10" width="40" height="40" rx="4" fill="#F5F0E8" stroke="#F5F0E8" stroke-width="2"/>
+                        <text x="25" y="38" font-family="serif" font-size="28" font-weight="bold" fill="#3E2723" text-anchor="middle">隆</text>
+                        <text x="110" y="38" font-family="serif" font-size="18" font-weight="600" fill="#F5F0E8" text-anchor="middle" letter-spacing="2">LONG TEA</text>
+                    </svg>
                     <p class="text-cream/70 max-w-sm leading-relaxed">
                         Premium bubble tea crafted with love, tradition, and innovation. Every sip is a moment worth savoring.
                     </p>
@@ -737,7 +674,7 @@
                         <li><a href="#home" class="text-cream/70 hover:text-caramel transition-colors text-sm">Home</a></li>
                         <li><a href="menu.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Menu</a></li>
                         <li><a href="#story" class="text-cream/70 hover:text-caramel transition-colors text-sm">Our Story</a></li>
-                        <li><a href="#stores" class="text-cream/70 hover:text-caramel transition-colors text-sm">Our Stores</a></li>
+                        <li><a href="stores.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Our Stores</a></li>
                     </ul>
                 </div>
                 <div>
@@ -754,16 +691,13 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
         }
         
-        // Scroll to Section
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
@@ -771,7 +705,6 @@
             }
         }
         
-        // Scroll Reveal Animation
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
