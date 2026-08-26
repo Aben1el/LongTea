@@ -190,67 +190,92 @@
         </div>
     </section>
 
-    <!-- Stores Grid -->
+    <!-- Stores Section - All branches on one page -->
     <section class="section-lux bg-cream">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Ambassador Mall Branch -->
-                <div class="store-card reveal">
-                    <div class="relative h-64 bg-beige overflow-hidden">
+            
+            <!-- Ambassador Mall Branch -->
+            <div class="store-card reveal mb-8">
+                <div class="grid lg:grid-cols-2">
+                    <div class="relative h-80 lg:h-auto overflow-hidden">
                         <img src="images/boba.jpg" alt="Long Tea Ambassador Mall" class="w-full h-full object-cover" style="mix-blend-mode: multiply;">
                         <div class="absolute inset-0 bg-gradient-to-t from-darkBrown/60 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4">
+                        <div class="absolute bottom-4 left-4">
                             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cream/90 text-darkBrown text-xs font-bold mb-2">
                                 📍 Main Branch
                             </div>
-                            <h3 class="font-display text-2xl font-bold text-cream">Ambassador Mall</h3>
+                            <h3 class="font-display text-3xl font-bold text-cream">Ambassador Mall</h3>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-base">📍</div>
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-caramel/20 flex items-center justify-center flex-shrink-0 text-2xl">📍</div>
                                 <div>
-                                    <p class="font-semibold text-darkBrown text-sm">Address</p>
-                                    <p class="text-brown/70 text-sm">4 Kilo, 3rd Floor<br>Ambassador Mall, Addis Ababa</p>
+                                    <h4 class="font-display text-lg font-bold text-darkBrown mb-1">Address</h4>
+                                    <p class="text-brown/70">4 Kilo, 3rd Floor<br>Ambassador Mall<br>Addis Ababa, Ethiopia</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-base">📞</div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-peach/30 flex items-center justify-center flex-shrink-0 text-2xl">📞</div>
                                 <div>
-                                    <p class="font-semibold text-darkBrown text-sm">Phone</p>
-                                    <a href="tel:+251951075065" class="text-brown/70 text-sm hover:text-caramel transition-colors">095 107 5065</a>
+                                    <h4 class="font-display text-lg font-bold text-darkBrown mb-1">Phone</h4>
+                                    <a href="tel:+251951075065" class="text-brown/70 hover:text-caramel transition-colors">095 107 5065</a>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-base">🕐</div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-matcha/20 flex items-center justify-center flex-shrink-0 text-2xl">🕐</div>
                                 <div>
-                                    <p class="font-semibold text-darkBrown text-sm">Hours</p>
-                                    <p class="text-brown/70 text-sm">Daily: 10:00 AM - 10:00 PM</p>
+                                    <h4 class="font-display text-lg font-bold text-darkBrown mb-1">Opening Hours</h4>
+                                    <p class="text-brown/70">Daily: 10:00 AM - 10:00 PM</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <a href="ambassador.html" class="btn-solid-dark w-full justify-center">
-                            Visit This Store
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="btn-solid-dark justify-center">
+                                Get Directions
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                            <a href="menu.html" class="btn-outline-dark justify-center">
+                                View Menu
+                            </a>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Coming Soon Card -->
-                <div class="store-card reveal" style="transition-delay: 0.1s">
-                    <div class="p-8 flex flex-col items-center justify-center text-center h-full min-h-[500px]">
-                        <div class="w-24 h-24 rounded-full bg-beige flex items-center justify-center text-5xl mb-6">🧋</div>
-                        <h3 class="font-display text-2xl font-bold text-darkBrown mb-3">More Locations Coming Soon</h3>
-                        <p class="text-brown/70 text-sm mb-6 max-w-xs">We're expanding! Check back soon for new Long Tea locations across Addis Ababa.</p>
-                        <a href="index.html#story" class="btn-outline-dark">
-                            Our Story
-                        </a>
-                    </div>
+            </div>
+
+            <!-- More Locations Coming Soon -->
+            <div class="text-center reveal" style="transition-delay: 0.2s">
+                <div class="bg-beige/50 rounded-2xl p-12">
+                    <div class="w-20 h-20 rounded-full bg-beige flex items-center justify-center text-4xl mx-auto mb-6">🧋</div>
+                    <h3 class="font-display text-2xl font-bold text-darkBrown mb-3">More Locations Coming Soon</h3>
+                    <p class="text-brown/70 max-w-md mx-auto">We're expanding! Check back soon for new Long Tea locations across Addis Ababa.</p>
                 </div>
-                
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section-lux bg-ivory">
+        <div class="max-w-7xl mx-auto px-6 text-center reveal">
+            <p class="text-script text-3xl text-caramel mb-4">Find Us</p>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-darkBrown mb-8">
+                Location <span class="italic text-caramel">Map</span>
+            </h2>
+            
+            <div class="relative rounded-2xl overflow-hidden bg-beige h-96 max-w-5xl mx-auto">
+                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop" alt="Map Location" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-darkBrown/20 flex items-center justify-center">
+                    <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="bg-cream rounded-full px-8 py-4 shadow-2xl hover:scale-105 transition-transform">
+                        <p class="font-semibold text-darkBrown flex items-center gap-2">
+                            🗺️ Open in Google Maps
+                        </p>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
