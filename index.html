@@ -1,5 +1,648 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-Hellow world
-    <head/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Tea | Premium Bubble Tea in Addis Ababa</title>
+    <meta name="description" content="Experience luxury bubble tea in Addis Ababa. Premium teas, handmade pearls, customizable flavors at Ambassador Mall.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF7F2',
+                        beige: '#F5EFE6',
+                        caramel: '#C4A77D',
+                        brown: '#6B4423',
+                        darkBrown: '#3E2723',
+                        matcha: '#8B9D77',
+                        berry: '#D4A5A5',
+                        warmWhite: '#FFFDF9',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #FFFDF9;
+            color: #3E2723;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Premium Gradient Background */
+        .bg-premium {
+            background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #FAF7F2 100%);
+            background-attachment: fixed;
+        }
+        
+        .glass {
+            background: rgba(255, 253, 249, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(196, 167, 125, 0.2);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 253, 249, 0.85);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(196, 167, 125, 0.15);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #C4A77D 0%, #D4A5A5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Image Hover Effects */
+        .img-hover {
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .group:hover .img-hover {
+            transform: scale(1.05);
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Parallax Effect */
+        .parallax {
+            will-change: transform;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #FAF7F2;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #C4A77D;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6B4423;
+        }
+        
+        /* Large Typography */
+        .text-hero {
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+        }
+        
+        .text-display {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+        
+        /* Premium Card */
+        .card-premium {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(62, 39, 35, 0.08);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .card-premium:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 80px rgba(62, 39, 35, 0.12);
+        }
+        
+        /* Button Styles */
+        .btn-premium {
+            background: #3E2723;
+            color: white;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .btn-premium:hover {
+            background: #C4A77D;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 167, 125, 0.3);
+        }
+        
+        /* Section Spacing */
+        .section-premium {
+            padding: 8rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-premium {
+                padding: 5rem 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-premium">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-500" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-caramel to-berry flex items-center justify-center text-2xl shadow-lg group-hover:rotate-12 transition-transform duration-300">🧋</div>
+                    <span class="font-display text-2xl font-bold text-darkBrown tracking-tight">LONG TEA</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-10">
+                    <a href="index.html" class="text-darkBrown font-semibold hover:text-caramel transition-colors">Home</a>
+                    <a href="menu.html" class="text-brown/70 hover:text-caramel transition-colors">Menu</a>
+                    <a href="#story" class="text-brown/70 hover:text-caramel transition-colors">Our Story</a>
+                    <a href="#locations" class="text-brown/70 hover:text-caramel transition-colors">Locations</a>
+                </div>
+                
+                <a href="menu.html" class="hidden md:inline-flex btn-premium">
+                    Order Now
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+                
+                <button class="md:hidden w-10 h-10 rounded-full bg-beige/50 flex items-center justify-center" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-cream/98 backdrop-blur-2xl hidden flex-col items-center justify-center gap-8">
+        <button class="absolute top-6 right-6 w-12 h-12 rounded-full bg-beige/50 flex items-center justify-center" onclick="toggleMobileMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="index.html" onclick="toggleMobileMenu()" class="font-display text-5xl text-darkBrown hover:text-caramel transition-colors">Home</a>
+        <a href="menu.html" onclick="toggleMobileMenu()" class="font-display text-5xl text-darkBrown hover:text-caramel transition-colors">Menu</a>
+        <a href="#story" onclick="toggleMobileMenu()" class="font-display text-5xl text-darkBrown hover:text-caramel transition-colors">Our Story</a>
+        <a href="#locations" onclick="toggleMobileMenu()" class="font-display text-5xl text-darkBrown hover:text-caramel transition-colors">Locations</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-caramel/20 to-berry/20 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-matcha/20 to-caramel/20 rounded-full blur-[100px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="reveal active">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-caramel/20 mb-8">
+                        <span class="text-xs font-bold text-caramel tracking-widest uppercase">Now Open at Ambassador Mall</span>
+                    </div>
+                    
+                    <h1 class="font-display text-hero font-bold text-darkBrown mb-6 leading-[0.95]">
+                        LONG<br>
+                        <span class="text-gradient italic">TEA</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-brown/70 mb-10 max-w-lg font-light leading-relaxed">
+                        A moment worth sipping. Premium bubble tea crafted with handmade pearls, fresh ingredients, and endless customization.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="menu.html" class="btn-premium group">
+                            Explore Menu
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <a href="#locations" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-darkBrown/20 text-darkBrown font-semibold hover:bg-darkBrown hover:text-white transition-all duration-300">
+                            Find Us
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hero Image -->
+                <div class="relative reveal active" style="transition-delay: 0.2s">
+                    <div class="relative z-10 animate-float">
+                        <img src="images/boba.jpg" alt="Signature Long Tea Boba" class="w-full max-w-lg mx-auto rounded-[3rem] shadow-2xl object-cover aspect-[4/5]">
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-6 -left-6 bg-white rounded-3xl p-6 shadow-2xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-caramel to-berry flex items-center justify-center text-2xl">✨</div>
+                                <div>
+                                    <p class="font-display text-2xl font-bold text-darkBrown">100%</p>
+                                    <p class="text-sm text-brown/70">Handmade Pearls</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-caramel/10 to-berry/10 rounded-full blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-caramel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <!-- BRAND STORY - Editorial Layout -->
+    <section id="story" class="section-premium relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Images Grid -->
+                <div class="grid grid-cols-2 gap-6 reveal">
+                    <div class="space-y-6">
+                        <img src="images/matcha.jpg" alt="Matcha Tea" class="rounded-3xl shadow-xl w-full object-cover aspect-[3/4]">
+                        <div class="bg-caramel/10 rounded-3xl p-8 flex items-center justify-center">
+                            <div class="text-center">
+                                <p class="font-display text-5xl font-bold text-caramel mb-2">50+</p>
+                                <p class="text-brown/70">Unique Flavors</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6 pt-12">
+                        <div class="bg-berry/10 rounded-3xl p-8 flex items-center justify-center">
+                            <div class="text-center">
+                                <p class="font-display text-5xl font-bold text-berry mb-2">100%</p>
+                                <p class="text-brown/70">Fresh Ingredients</p>
+                            </div>
+                        </div>
+                        <img src="images/mango.jpg" alt="Mango Tea" class="rounded-3xl shadow-xl w-full object-cover aspect-[3/4]">
+                    </div>
+                </div>
+                
+                <!-- Text Content -->
+                <div class="reveal">
+                    <p class="text-caramel font-semibold tracking-widest uppercase text-sm mb-4">Our Story</p>
+                    <h2 class="font-display text-display font-bold text-darkBrown mb-6">
+                        Where Tradition<br>
+                        <span class="italic text-gradient">Meets Innovation</span>
+                    </h2>
+                    <p class="text-lg text-brown/70 leading-relaxed mb-6">
+                        At Long Tea, we believe every sip should be an experience. Inspired by centuries of tea culture and refined with modern craftsmanship, we bring you bubble tea that transcends the ordinary.
+                    </p>
+                    <p class="text-lg text-brown/70 leading-relaxed mb-8">
+                        From our handmade pearls to our premium loose-leaf teas, every element is carefully selected and crafted to create moments worth savoring.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-full bg-caramel/10 flex items-center justify-center mx-auto mb-3 text-3xl">🌿</div>
+                            <p class="font-semibold text-darkBrown">Premium</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-full bg-berry/10 flex items-center justify-center mx-auto mb-3 text-3xl">🤎</div>
+                            <p class="font-semibold text-darkBrown">Handmade</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-full bg-matcha/10 flex items-center justify-center mx-auto mb-3 text-3xl">✨</div>
+                            <p class="font-semibold text-darkBrown">Fresh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED DRINKS -->
+    <section class="section-premium bg-white/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-caramel font-semibold tracking-widest uppercase text-sm mb-4">Signature Collection</p>
+                <h2 class="font-display text-display font-bold text-darkBrown mb-6">
+                    Customer <span class="italic text-gradient">Favorites</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Featured 1 -->
+                <div class="group card-premium reveal">
+                    <div class="relative h-96 overflow-hidden bg-beige/50">
+                        <img src="images/boba.jpg" alt="Signature Boba" class="w-full h-full object-cover img-hover">
+                        <div class="absolute top-6 left-6 px-4 py-2 bg-white/90 rounded-full">
+                            <span class="text-xs font-bold text-caramel">SIGNATURE</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold text-darkBrown mb-2">Signature Boba Tea</h3>
+                        <p class="text-brown/70 mb-4">Classic black tea, creamy milk, warm brown sugar pearls</p>
+                        <div class="flex items-center justify-between">
+                            <p class="text-caramel font-bold text-lg">From 450 ETB</p>
+                            <a href="menu.html" class="text-darkBrown font-semibold hover:text-caramel transition-colors flex items-center gap-2">
+                                Order
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured 2 -->
+                <div class="group card-premium reveal" style="transition-delay: 0.1s">
+                    <div class="relative h-96 overflow-hidden bg-beige/50">
+                        <img src="images/matcha.jpg" alt="Sweet Matcha" class="w-full h-full object-cover img-hover">
+                        <div class="absolute top-6 left-6 px-4 py-2 bg-white/90 rounded-full">
+                            <span class="text-xs font-bold text-matcha">POPULAR</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold text-darkBrown mb-2">Sweet Matcha</h3>
+                        <p class="text-brown/70 mb-4">Ceremonial grade matcha, fresh milk, natural sweetness</p>
+                        <div class="flex items-center justify-between">
+                            <p class="text-caramel font-bold text-lg">560 ETB</p>
+                            <a href="menu.html" class="text-darkBrown font-semibold hover:text-caramel transition-colors flex items-center gap-2">
+                                Order
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured 3 -->
+                <div class="group card-premium reveal" style="transition-delay: 0.2s">
+                    <div class="relative h-96 overflow-hidden bg-beige/50">
+                        <img src="images/mango.jpg" alt="Mango Pomelo" class="w-full h-full object-cover img-hover">
+                        <div class="absolute top-6 left-6 px-4 py-2 bg-white/90 rounded-full">
+                            <span class="text-xs font-bold text-berry">REFRESHING</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold text-darkBrown mb-2">Mango Pomelo Sago</h3>
+                        <p class="text-brown/70 mb-4">Tropical mango, juicy pomelo, sago pearls</p>
+                        <div class="flex items-center justify-between">
+                            <p class="text-caramel font-bold text-lg">630 ETB</p>
+                            <a href="menu.html" class="text-darkBrown font-semibold hover:text-caramel transition-colors flex items-center gap-2">
+                                Order
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 reveal">
+                <a href="menu.html" class="btn-premium">
+                    View Full Menu
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY LONG TEA -->
+    <section class="section-premium">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <p class="text-caramel font-semibold tracking-widest uppercase text-sm mb-4">Why Choose Us</p>
+                    <h2 class="font-display text-display font-bold text-darkBrown mb-8">
+                        Crafted for<br>
+                        <span class="italic text-gradient">Excellence</span>
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-6 items-start group">
+                            <div class="w-16 h-16 rounded-2xl bg-caramel/10 flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">🍵</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Premium Tea Base</h3>
+                                <p class="text-brown/70">Sourced from the finest tea gardens, carefully selected for optimal flavor and aroma.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-6 items-start group">
+                            <div class="w-16 h-16 rounded-2xl bg-berry/10 flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">🤎</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Handmade Daily</h3>
+                                <p class="text-brown/70">Our signature pearls are crafted fresh every day using traditional techniques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-6 items-start group">
+                            <div class="w-16 h-16 rounded-2xl bg-matcha/10 flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">🎨</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Fully Customizable</h3>
+                                <p class="text-brown/70">Your drink, your way. Choose sweetness, ice level, and endless toppings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative reveal">
+                    <img src="https://images.unsplash.com/photo-1558855410-3112e2139405?q=80&w=1000&auto=format&fit=crop" alt="Long Tea Craftsmanship" class="rounded-[3rem] shadow-2xl w-full">
+                    <div class="absolute -bottom-8 -right-8 bg-white rounded-3xl p-8 shadow-2xl max-w-xs hidden lg:block">
+                        <p class="font-display text-3xl font-bold text-darkBrown mb-2">"Every cup is a work of art"</p>
+                        <p class="text-brown/70">— Long Tea Philosophy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section id="locations" class="section-premium bg-white/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-caramel font-semibold tracking-widest uppercase text-sm mb-4">Visit Us</p>
+                <h2 class="font-display text-display font-bold text-darkBrown mb-6">
+                    Find Your <span class="italic text-gradient">Long Tea</span>
+                </h2>
+            </div>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="card-premium reveal overflow-hidden">
+                    <div class="grid lg:grid-cols-2">
+                        <div class="p-12 flex flex-col justify-center">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-caramel/10 text-caramel text-sm font-bold mb-6 w-fit">
+                                📍 Ambassador Branch
+                            </div>
+                            <h3 class="font-display text-3xl font-bold text-darkBrown mb-6">Long Tea<br>Ambassador Mall</h3>
+                            
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0">📍</div>
+                                    <div>
+                                        <p class="font-semibold text-darkBrown">4 Kilo, 3rd Floor</p>
+                                        <p class="text-brown/70">Ambassador Mall, Addis Ababa</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0">📞</div>
+                                    <div>
+                                        <p class="font-semibold text-darkBrown">Call Us</p>
+                                        <a href="tel:+251951075065" class="text-brown/70 hover:text-caramel transition-colors">095 107 5065</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0">🕐</div>
+                                    <div>
+                                        <p class="font-semibold text-darkBrown">Hours</p>
+                                        <p class="text-brown/70">Daily: 10:00 AM - 10:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" class="btn-premium w-fit">
+                                Get Directions
+                            </a>
+                        </div>
+                        
+                        <div class="relative min-h-[400px] lg:min-h-full">
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop" alt="Ambassador Mall Location" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-darkBrown/20 flex items-center justify-center">
+                                <div class="bg-white rounded-full px-8 py-4 shadow-2xl">
+                                    <p class="font-semibold text-darkBrown flex items-center gap-2">
+                                        ️ View on Map
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section-premium">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="card-premium reveal overflow-hidden relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-caramel/20 via-beige/20 to-berry/20"></div>
+                <div class="relative z-10 p-16 text-center">
+                    <h2 class="font-display text-display font-bold text-darkBrown mb-6">
+                        Ready to Sip?
+                    </h2>
+                    <p class="text-xl text-brown/70 mb-10 max-w-2xl mx-auto">
+                        Visit us at Ambassador Mall or explore our full menu to discover your perfect Long Tea creation.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="menu.html" class="btn-premium">
+                            Order Now
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <a href="#locations" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-darkBrown/20 text-darkBrown font-semibold hover:bg-darkBrown hover:text-white transition-all duration-300">
+                            Find Location
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-darkBrown text-cream py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-caramel to-berry flex items-center justify-center text-2xl">🧋</div>
+                        <span class="font-display text-3xl font-bold">LONG TEA</span>
+                    </div>
+                    <p class="text-cream/70 max-w-sm leading-relaxed mb-6">
+                        Premium bubble tea crafted with love, tradition, and innovation. Every sip is a moment worth savoring.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-display text-xl font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-cream/70 hover:text-caramel transition-colors">Home</a></li>
+                        <li><a href="menu.html" class="text-cream/70 hover:text-caramel transition-colors">Menu</a></li>
+                        <li><a href="#story" class="text-cream/70 hover:text-caramel transition-colors">Our Story</a></li>
+                        <li><a href="#locations" class="text-cream/70 hover:text-caramel transition-colors">Locations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display text-xl font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3 text-cream/70">
+                        <li>Ambassador Mall<br>4 Kilo, Addis Ababa</li>
+                        <li><a href="tel:+251951075065" class="hover:text-caramel transition-colors">095 107 5065</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-cream/10 text-center text-cream/50">
+                <p>© 2026 Long Tea Ethiopia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+        
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // Navbar Scroll Effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
