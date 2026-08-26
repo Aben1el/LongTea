@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambassador Branch | Long Tea</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='16' y='20' width='32' height='36' rx='4' fill='%238B6F47'/%3E%3Crect x='18' y='22' width='28' height='32' rx='2' fill='%23D4C4B0'/%3E%3Ccircle cx='24' cy='48' r='3' fill='%233E2723'/%3E%3Ccircle cx='32' cy='50' r='3' fill='%233E2723'/%3E%3Ccircle cx='40' cy='48' r='3' fill='%233E2723'/%3E%3Crect x='14' y='16' width='36' height='6' rx='2' fill='%236B4423'/%3E%3Cline x1='32' y1='8' x2='32' y2='16' stroke='%233E2723' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#F5F0E8',
+                        ivory: '#FAF7F2',
+                        warmWhite: '#FFFDF9',
+                        beige: '#EDE7DD',
+                        latte: '#D4C4B0',
+                        caramel: '#A67C52',
+                        brown: '#6B4423',
+                        darkBrown: '#3E2723',
+                        espresso: '#2C1810',
+                        peach: '#E8B4A0',
+                        blush: '#D4A5A5',
+                        matcha: '#8B9D77',
+                        mango: '#E8A87C',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                        script: ['Cormorant Garamond', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            background-color: #F5F0E8;
+            color: #3E2723;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .text-editorial {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+        
+        .text-script {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+        
+        .btn-outline-dark {
+            background: transparent;
+            color: #3E2723;
+            border: 1.5px solid #3E2723;
+            border-radius: 50px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-outline-dark:hover {
+            background: #3E2723;
+            color: #F5F0E8;
+        }
+        
+        .btn-solid-dark {
+            background: #3E2723;
+            color: #F5F0E8;
+            border-radius: 50px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-solid-dark:hover {
+            background: #6B4423;
+            transform: translateY(-2px);
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-lux {
+            padding: 6rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-lux {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-5 bg-cream/90 backdrop-blur-md border-b border-beige/50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <svg class="h-10 w-auto" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="10" width="40" height="40" rx="4" fill="#3E2723" stroke="#3E2723" stroke-width="2"/>
+                    <text x="25" y="38" font-family="serif" font-size="28" font-weight="bold" fill="#F5F0E8" text-anchor="middle">隆</text>
+                    <text x="110" y="38" font-family="serif" font-size="18" font-weight="600" fill="#3E2723" text-anchor="middle" letter-spacing="2">LONG TEA</text>
+                </svg>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-12">
+                <a href="index.html" class="text-brown/70 font-medium text-sm tracking-wide hover:text-darkBrown transition-colors">Home</a>
+                <a href="menu.html" class="text-brown/70 font-medium text-sm tracking-wide hover:text-darkBrown transition-colors">Menu</a>
+                <a href="index.html#story" class="text-brown/70 font-medium text-sm tracking-wide hover:text-darkBrown transition-colors">Our Story</a>
+                <a href="stores.html" class="text-brown/70 font-medium text-sm tracking-wide hover:text-darkBrown transition-colors">Our Stores</a>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <button class="md:hidden w-10 h-10 rounded-full bg-beige flex items-center justify-center text-darkBrown" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-darkBrown/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8">
+        <button class="absolute top-6 right-6 w-12 h-12 rounded-full bg-cream/10 flex items-center justify-center text-cream" onclick="toggleMobileMenu()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="index.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Home</a>
+        <a href="menu.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Menu</a>
+        <a href="index.html#story" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Our Story</a>
+        <a href="stores.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-cream">Our Stores</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[60vh] flex items-end overflow-hidden bg-beige">
+        <div class="absolute inset-0">
+            <img src="images/boba.jpg" alt="Long Tea Ambassador Mall" class="w-full h-full object-cover" style="mix-blend-mode: multiply; opacity: 0.3;">
+            <div class="absolute inset-0 bg-gradient-to-t from-cream via-cream/50 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 reveal active">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-caramel/20 text-caramel text-sm font-bold mb-6">
+                📍 Main Branch
+            </div>
+            <h1 class="font-display text-5xl md:text-7xl font-bold text-darkBrown mb-4">
+                Long Tea — <span class="text-caramel italic">Ambassador</span>
+            </h1>
+            <p class="text-brown/70 text-lg max-w-2xl">4 Kilo, 3rd Floor, Ambassador Mall, Addis Ababa</p>
+        </div>
+    </section>
+
+    <!-- Branch Details -->
+    <section class="section-lux bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16">
+                
+                <!-- Left: Info -->
+                <div class="reveal">
+                    <p class="text-script text-3xl text-caramel mb-4">Visit Us</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-darkBrown mb-8">
+                        Ambassador <span class="italic text-caramel">Mall</span>
+                    </h2>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start gap-4 p-6 bg-beige/50 rounded-xl">
+                            <div class="w-12 h-12 rounded-full bg-caramel/20 flex items-center justify-center flex-shrink-0 text-2xl">📍</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Address</h3>
+                                <p class="text-brown/70">4 Kilo, 3rd Floor<br>Ambassador Mall<br>Addis Ababa, Ethiopia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-6 bg-beige/50 rounded-xl">
+                            <div class="w-12 h-12 rounded-full bg-peach/30 flex items-center justify-center flex-shrink-0 text-2xl">📞</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Phone</h3>
+                                <a href="tel:+251951075065" class="text-brown/70 hover:text-caramel transition-colors text-lg">095 107 5065</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-6 bg-beige/50 rounded-xl">
+                            <div class="w-12 h-12 rounded-full bg-matcha/20 flex items-center justify-center flex-shrink-0 text-2xl">🕐</div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Opening Hours</h3>
+                                <p class="text-brown/70">Daily: 10:00 AM - 10:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="btn-solid-dark">
+                            Get Directions
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <a href="menu.html" class="btn-outline-dark">
+                            View Menu
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right: Visual -->
+                <div class="reveal" style="transition-delay: 0.2s">
+                    <div class="relative">
+                        <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-beige">
+                            <img src="images/boba.jpg" alt="Long Tea Ambassador Branch" class="w-full h-full object-cover" style="mix-blend-mode: multiply;">
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-cream rounded-xl p-6 shadow-xl max-w-xs">
+                            <p class="font-display text-2xl font-bold text-darkBrown mb-1">Premium Experience</p>
+                            <p class="text-brown/70 text-sm">Handmade pearls, fresh ingredients, endless customization.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section-lux bg-ivory">
+        <div class="max-w-7xl mx-auto px-6 text-center reveal">
+            <p class="text-script text-3xl text-caramel mb-4">Find Us</p>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-darkBrown mb-8">
+                Location <span class="italic text-caramel">Map</span>
+            </h2>
+            
+            <div class="relative rounded-2xl overflow-hidden bg-beige h-96">
+                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop" alt="Map Location" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-darkBrown/20 flex items-center justify-center">
+                    <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="bg-cream rounded-full px-8 py-4 shadow-2xl hover:scale-105 transition-transform">
+                        <p class="font-semibold text-darkBrown flex items-center gap-2">
+                            🗺️ Open in Google Maps
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-lux bg-peach/30">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="font-display text-4xl md:text-6xl font-bold text-darkBrown mb-6">
+                Ready to <span class="italic text-caramel">Visit?</span>
+            </h2>
+            <p class="text-lg text-brown/70 mb-10 max-w-2xl mx-auto">
+                Come experience Long Tea at Ambassador Mall. We can't wait to serve you your perfect cup.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="btn-solid-dark">
+                    Visit This Store
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+                <a href="stores.html" class="btn-outline-dark">
+                    All Stores
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darkBrown text-cream py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <svg class="h-10 w-auto mb-4" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="10" width="40" height="40" rx="4" fill="#F5F0E8" stroke="#F5F0E8" stroke-width="2"/>
+                        <text x="25" y="38" font-family="serif" font-size="28" font-weight="bold" fill="#3E2723" text-anchor="middle">隆</text>
+                        <text x="110" y="38" font-family="serif" font-size="18" font-weight="600" fill="#F5F0E8" text-anchor="middle" letter-spacing="2">LONG TEA</text>
+                    </svg>
+                    <p class="text-cream/70 max-w-sm leading-relaxed">
+                        Premium bubble tea crafted with love, tradition, and innovation. Every sip is a moment worth savoring.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Home</a></li>
+                        <li><a href="menu.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Menu</a></li>
+                        <li><a href="index.html#story" class="text-cream/70 hover:text-caramel transition-colors text-sm">Our Story</a></li>
+                        <li><a href="stores.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Our Stores</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-cream/70 text-sm">
+                        <li>Ambassador Mall<br>4 Kilo, Addis Ababa</li>
+                        <li><a href="tel:+251951075065" class="hover:text-caramel transition-colors">095 107 5065</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-cream/10 text-center text-cream/50 text-sm">
+                <p>© 2026 Long Tea Ethiopia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
