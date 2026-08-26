@@ -38,11 +38,30 @@
     </script>
     
     <style>
+        /* Unique, Non-Flat Background */
         body {
             background-color: #FDFBF7;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(28,100%,74%,0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(340,100%,76%,0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(120,25%,61%,0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(280,40%,78%,0.1) 0px, transparent 50%);
+            background-attachment: fixed;
             color: #3E2723;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
+        }
+
+        /* Subtle Dot Pattern Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#D4A373 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
         }
         
         .glass {
@@ -52,6 +71,13 @@
             box-shadow: 0 8px 32px rgba(62, 39, 35, 0.05);
         }
         
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 40px rgba(62, 39, 35, 0.08);
+        }
+
         .glass-strong {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
@@ -68,8 +94,8 @@
 
         /* The Minecraft Float Animation */
         @keyframes float-cup {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
         }
         .animate-float {
             animation: float-cup 4s ease-in-out infinite;
@@ -94,7 +120,7 @@
 
         @keyframes rise {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.6; }
+            50% { opacity: 0.4; }
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
         .animate-rise {
@@ -117,45 +143,50 @@
         <div class="boba-pearl w-7 h-7 animate-rise" style="left: 50%; animation-duration: 11s; animation-delay: 7s;"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-6xl transition-all duration-500">
-        <div class="glass-strong rounded-full px-6 py-3 flex items-center justify-between">
+    <!-- Navigation (Boba-ish, Round, Responsive) -->
+    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[92%] max-w-5xl transition-all duration-500">
+        <div class="glass-nav rounded-full px-4 md:px-6 py-3 flex items-center justify-between border border-white/50 shadow-lg shadow-caramel/10">
+            <!-- Logo -->
             <a href="index.html" class="flex items-center gap-2 group">
-                <div class="w-8 h-8 rounded-full bg-caramel flex items-center justify-center text-white font-bold text-sm">LT</div>
-                <span class="font-display text-xl font-bold tracking-wide text-tea">LONG TEA</span>
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-caramel to-berry flex items-center justify-center text-white text-lg shadow-md group-hover:rotate-12 transition-transform duration-300">🧋</div>
+                <span class="font-display text-xl font-bold tracking-wide text-tea hidden sm:block">LONG TEA</span>
             </a>
 
-            <div class="hidden md:flex items-center gap-8">
-                <a href="index.html" class="text-sm font-bold text-tea">Home</a>
-                <a href="menu.html" class="text-sm font-semibold text-teaLight hover:text-caramel transition-colors">Menu</a>
-                <a href="#story" class="text-sm font-semibold text-teaLight hover:text-caramel transition-colors">Our Story</a>
-                <a href="#locations" class="text-sm font-semibold text-teaLight hover:text-caramel transition-colors">Locations</a>
-                <a href="menu.html" class="bg-tea hover:bg-caramel text-cream px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-caramel/30">Order Now</a>
+            <!-- Desktop Links (Inner Pill) -->
+            <div class="hidden md:flex items-center gap-1 bg-white/50 rounded-full px-2 py-1.5 border border-white/60">
+                <a href="index.html" class="text-sm font-bold text-tea bg-caramel/20 px-4 py-1.5 rounded-full transition-all">Home</a>
+                <a href="menu.html" class="text-sm font-semibold text-teaLight hover:text-caramel transition-colors px-4 py-1.5 rounded-full hover:bg-white/50">Menu</a>
+                <a href="#story" class="text-sm font-semibold text-teaLight hover:text-caramel transition-colors px-4 py-1.5 rounded-full hover:bg-white/50">Our Story</a>
+                <a href="#locations" class="text-sm font-semibold text-teaLight hover:text-caramel transition-colors px-4 py-1.5 rounded-full hover:bg-white/50">Locations</a>
             </div>
 
-            <button class="md:hidden text-tea" onclick="toggleMobileMenu()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
+            <!-- CTA & Mobile Toggle -->
+            <div class="flex items-center gap-3">
+                <a href="menu.html" class="hidden md:inline-flex bg-tea hover:bg-caramel text-cream px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 shadow-md hover:shadow-caramel/30">Order Now</a>
+                <button class="md:hidden w-10 h-10 rounded-full bg-caramel/20 flex items-center justify-center text-tea hover:bg-caramel hover:text-cream transition-all" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 bg-cream/95 backdrop-blur-2xl hidden flex-col items-center justify-center gap-8">
-        <a href="index.html" class="font-display text-3xl text-tea hover:text-caramel">Home</a>
-        <a href="menu.html" class="font-display text-3xl text-tea hover:text-caramel">Menu</a>
-        <a href="#story" class="font-display text-3xl text-tea hover:text-caramel">Our Story</a>
-        <a href="#locations" class="font-display text-3xl text-tea hover:text-caramel">Locations</a>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-cream/95 backdrop-blur-2xl hidden flex-col items-center justify-center gap-8 transition-all duration-300">
+        <button class="absolute top-6 right-6 w-12 h-12 rounded-full bg-caramel/20 flex items-center justify-center text-tea" onclick="toggleMobileMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="index.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-tea hover:text-caramel transition-colors">Home</a>
+        <a href="menu.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-tea hover:text-caramel transition-colors">Menu</a>
+        <a href="#story" onclick="toggleMobileMenu()" class="font-display text-4xl text-tea hover:text-caramel transition-colors">Our Story</a>
+        <a href="#locations" onclick="toggleMobileMenu()" class="font-display text-4xl text-tea hover:text-caramel transition-colors">Locations</a>
+        <a href="menu.html" onclick="toggleMobileMenu()" class="mt-4 bg-tea text-cream px-10 py-4 rounded-full text-xl font-bold shadow-xl">Order Now 🧋</a>
     </div>
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
-        <!-- Soft Gradient Blobs -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-berry/30 rounded-full blur-[100px]"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-matcha/20 rounded-full blur-[120px]"></div>
-
         <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div class="text-center md:text-left">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6 border border-caramel/20">
                     <span class="text-xs font-bold text-caramel tracking-widest uppercase">✨ Now at Ambassador Mall</span>
                 </div>
                 
@@ -172,26 +203,26 @@
                         Explore Full Menu
                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                     </a>
-                    <a href="#locations" class="flex items-center justify-center gap-2 glass hover:bg-white text-tea px-8 py-4 rounded-full text-lg font-bold transition-all duration-300">
+                    <a href="#locations" class="flex items-center justify-center gap-2 glass hover:bg-white text-tea px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 border border-white/50">
                         Find Us
                     </a>
                 </div>
             </div>
 
             <div class="relative flex justify-center items-center">
-                <div class="absolute w-80 h-80 bg-gradient-to-tr from-caramel/40 to-berry/30 rounded-full blur-[60px]"></div>
+                <div class="absolute w-80 h-80 bg-gradient-to-tr from-caramel/40 to-berry/30 rounded-full blur-[80px]"></div>
                 
-                <!-- Hero Image with Float and Blend -->
+                <!-- Hero Image -->
                 <img src="images/boba.jpg" 
                      alt="Fresh Long Tea Bubble Tea" 
                      class="relative z-10 w-72 md:w-[450px] animate-float blend-multiply">
                 
                 <!-- Floating Tags -->
-                <div class="absolute top-10 -left-4 md:left-0 glass px-4 py-3 rounded-2xl z-20 animate-float delay-1">
+                <div class="absolute top-10 -left-4 md:left-0 glass px-4 py-3 rounded-2xl z-20 animate-float delay-1 border border-white/50">
                     <span class="text-2xl">🧋</span>
                     <p class="text-xs font-bold text-tea">Handmade Pearls</p>
                 </div>
-                <div class="absolute bottom-10 -right-4 md:right-0 glass px-4 py-3 rounded-2xl z-20 animate-float delay-2">
+                <div class="absolute bottom-10 -right-4 md:right-0 glass px-4 py-3 rounded-2xl z-20 animate-float delay-2 border border-white/50">
                     <span class="text-2xl">🍓</span>
                     <p class="text-xs font-bold text-tea">Fresh Fruits</p>
                 </div>
@@ -210,17 +241,17 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300">
-                    <div class="w-14 h-14 rounded-2xl bg-matcha/20 flex items-center justify-center mb-6 text-3xl">🌿</div>
+                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 border border-white/50">
+                    <div class="w-14 h-14 rounded-2xl bg-matcha/20 flex items-center justify-center mb-6 text-3xl"></div>
                     <h3 class="font-display text-2xl font-bold mb-3 text-tea">Premium Ingredients</h3>
                     <p class="text-teaLight leading-relaxed">Sourced loose-leaf teas and rich, textured milk for an authentic base.</p>
                 </div>
-                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300">
+                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 border border-white/50">
                     <div class="w-14 h-14 rounded-2xl bg-berry/20 flex items-center justify-center mb-6 text-3xl">🤎</div>
                     <h3 class="font-display text-2xl font-bold mb-3 text-tea">Crafted with Care</h3>
                     <p class="text-teaLight leading-relaxed">Handmade pearls, delicately chewy and infused with natural sweetness.</p>
                 </div>
-                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300">
+                <div class="glass p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 border border-white/50">
                     <div class="w-14 h-14 rounded-2xl bg-caramel/20 flex items-center justify-center mb-6 text-3xl">🫂</div>
                     <h3 class="font-display text-2xl font-bold mb-3 text-tea">A Place to Connect</h3>
                     <p class="text-teaLight leading-relaxed">A welcoming environment designed for relaxation and community.</p>
@@ -230,7 +261,7 @@
     </section>
 
     <!-- Find Your Flavor (Menu Teaser) -->
-    <section class="py-24 bg-milk/50 relative overflow-hidden">
+    <section class="py-24 relative overflow-hidden">
         <div class="container mx-auto px-6 text-center">
             <span class="text-caramel font-bold tracking-widest uppercase text-sm">Our Favorites</span>
             <h2 class="font-display text-4xl md:text-6xl font-bold mt-4 mb-6 text-tea">Find Your <span class="text-gradient">Flavor</span></h2>
@@ -238,7 +269,7 @@
 
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
                 <!-- Teaser 1 -->
-                <div class="glass rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300">
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 border border-white/50">
                     <div class="h-64 flex items-center justify-center mb-4">
                         <img src="images/boba.jpg" class="w-full h-full object-contain blend-multiply animate-float" alt="Boba Tea">
                     </div>
@@ -246,7 +277,7 @@
                     <p class="text-sm text-teaLight mt-2">Classic black tea, creamy milk, and warm brown sugar pearls.</p>
                 </div>
                 <!-- Teaser 2 -->
-                <div class="glass rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300">
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 border border-white/50">
                     <div class="h-64 flex items-center justify-center mb-4">
                         <img src="images/matcha.jpg" class="w-full h-full object-contain blend-multiply animate-float delay-1" alt="Matcha">
                     </div>
@@ -254,7 +285,7 @@
                     <p class="text-sm text-teaLight mt-2">Ceremonial grade matcha whisked to perfection with fresh milk.</p>
                 </div>
                 <!-- Teaser 3 -->
-                <div class="glass rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300">
+                <div class="glass rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 border border-white/50">
                     <div class="h-64 flex items-center justify-center mb-4">
                         <img src="images/mango.jpg" class="w-full h-full object-contain blend-multiply animate-float delay-2" alt="Fruit Tea">
                     </div>
@@ -270,85 +301,6 @@
         </div>
     </section>
 
-    <!-- Build Your Drink Section -->
-    <section class="py-24 relative z-10">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <span class="text-caramel font-bold tracking-widest uppercase text-sm">Interactive Experience</span>
-                <h2 class="font-display text-4xl md:text-6xl font-bold mt-4 mb-6 text-tea">Build Your <span class="text-gradient">Perfect Cup</span></h2>
-                <p class="text-teaLight max-w-2xl mx-auto">Long Tea is all about customization. Craft your perfect drink in three simple steps.</p>
-            </div>
-
-            <div class="max-w-4xl mx-auto glass-strong rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
-                <!-- Decorative floating boba -->
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-berry/20 rounded-full blur-3xl"></div>
-                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-matcha/20 rounded-full blur-3xl"></div>
-
-                <div class="relative z-10">
-                    <!-- Progress Bar -->
-                    <div class="flex gap-2 mb-12">
-                        <div class="h-2 flex-1 rounded-full bg-caramel/30 transition-all duration-500"></div>
-                        <div class="h-2 flex-1 rounded-full bg-caramel/30 transition-all duration-500"></div>
-                        <div class="h-2 flex-1 rounded-full bg-caramel/30 transition-all duration-500"></div>
-                    </div>
-
-                    <!-- Step 1 -->
-                    <div class="text-center mb-8">
-                        <h3 class="font-display text-2xl md:text-3xl font-bold mb-8 text-tea">1. Choose Your Base</h3>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <button class="glass p-6 rounded-2xl hover:bg-caramel hover:text-cream text-tea transition-all duration-300 group">
-                                <span class="text-3xl mb-2 block group-hover:animate-float">🧋</span>
-                                <span class="font-bold">Signature Milk Tea</span>
-                            </button>
-                            <button class="glass p-6 rounded-2xl hover:bg-caramel hover:text-cream text-tea transition-all duration-300 group">
-                                <span class="text-3xl mb-2 block group-hover:animate-float">🍓</span>
-                                <span class="font-bold">Fresh Fruit Tea</span>
-                            </button>
-                            <button class="glass p-6 rounded-2xl hover:bg-caramel hover:text-cream text-tea transition-all duration-300 group">
-                                <span class="text-3xl mb-2 block group-hover:animate-float"></span>
-                                <span class="font-bold">Premium Matcha</span>
-                            </button>
-                            <button class="glass p-6 rounded-2xl hover:bg-caramel hover:text-cream text-tea transition-all duration-300 group">
-                                <span class="text-3xl mb-2 block group-hover:animate-float">🥥</span>
-                                <span class="font-bold">Coconut Blend</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="text-center mb-8">
-                        <h3 class="font-display text-2xl md:text-3xl font-bold mb-8 text-tea">2. Select Sweetness</h3>
-                        <div class="flex flex-wrap justify-center gap-4">
-                            <button class="px-8 py-4 rounded-full glass hover:bg-berry hover:text-cream text-tea font-bold transition-all duration-300">0% (Unsweetened)</button>
-                            <button class="px-8 py-4 rounded-full glass hover:bg-berry hover:text-cream text-tea font-bold transition-all duration-300">50% (Half Sweet)</button>
-                            <button class="px-8 py-4 rounded-full glass hover:bg-berry hover:text-cream text-tea font-bold transition-all duration-300">100% (Regular)</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="text-center">
-                        <h3 class="font-display text-2xl md:text-3xl font-bold mb-8 text-tea">3. Add Toppings</h3>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <button class="glass p-4 rounded-2xl hover:bg-matcha hover:text-cream text-tea transition-all duration-300 font-bold">Signature Pearls</button>
-                            <button class="glass p-4 rounded-2xl hover:bg-matcha hover:text-cream text-tea transition-all duration-300 font-bold">Popping Boba</button>
-                            <button class="glass p-4 rounded-2xl hover:bg-matcha hover:text-cream text-tea transition-all duration-300 font-bold">Grass Jelly</button>
-                            <button class="glass p-4 rounded-2xl hover:bg-matcha hover:text-cream text-tea transition-all duration-300 font-bold">Cheese Foam</button>
-                        </div>
-                    </div>
-
-                    <!-- CTA -->
-                    <div class="mt-12 pt-8 border-t border-caramel/20 text-center">
-                        <p class="text-teaLight mb-6 text-lg">Your custom creation is ready to be made.</p>
-                        <a href="menu.html" class="inline-flex items-center gap-2 bg-tea hover:bg-caramel text-cream px-10 py-4 rounded-full text-lg font-bold transition-all duration-300 shadow-xl hover:shadow-caramel/40">
-                            Order This Creation
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Locations Section -->
     <section id="locations" class="py-24">
         <div class="container mx-auto px-6">
@@ -358,7 +310,7 @@
             </div>
 
             <div class="max-w-4xl mx-auto">
-                <div class="glass-strong rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
+                <div class="glass-strong rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden border border-white/50">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-berry/10 rounded-full blur-[80px]"></div>
                     <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
                         <div>
@@ -369,21 +321,21 @@
                             
                             <div class="space-y-4">
                                 <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-caramel"></div>
+                                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-caramel shadow-sm"></div>
                                     <div>
                                         <p class="font-bold text-tea">4 Kilo, 3rd Floor</p>
                                         <p class="text-teaLight">Ambassador Mall, Addis Ababa, Ethiopia</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-caramel">📞</div>
+                                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-caramel shadow-sm">📞</div>
                                     <div>
                                         <p class="font-bold text-tea">Call Us</p>
                                         <a href="tel:+251951075065" class="text-teaLight hover:text-caramel transition-colors">095 107 5065</a>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-caramel">🕒</div>
+                                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-caramel shadow-sm"></div>
                                     <div>
                                         <p class="font-bold text-tea">Opening Hours</p>
                                         <p class="text-teaLight">Daily: 10:00 AM - 10:00 PM</p>
@@ -391,7 +343,7 @@
                                 </div>
                             </div>
 
-                            <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" class="mt-8 inline-flex items-center gap-2 bg-tea hover:bg-caramel text-cream px-6 py-3 rounded-full font-bold transition-all duration-300">
+                            <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" class="mt-8 inline-flex items-center gap-2 bg-tea hover:bg-caramel text-cream px-6 py-3 rounded-full font-bold transition-all duration-300 shadow-md">
                                 Get Directions
                             </a>
                         </div>
@@ -399,7 +351,7 @@
                         <div class="relative h-80 rounded-3xl overflow-hidden border-4 border-white shadow-xl">
                             <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop" alt="Map" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-tea/10 flex items-center justify-center">
-                                <div class="glass px-6 py-3 rounded-full flex items-center gap-2">
+                                <div class="glass px-6 py-3 rounded-full flex items-center gap-2 border border-white/50">
                                     <span class="text-2xl">🗺️</span>
                                     <span class="font-bold text-tea">View on Map</span>
                                 </div>
@@ -412,12 +364,12 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-milk border-t border-caramel/20 pt-20 pb-10">
+    <footer class="bg-milk/80 backdrop-blur-md border-t border-caramel/20 pt-20 pb-10 mt-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 mb-16">
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 rounded-full bg-caramel flex items-center justify-center text-white font-bold text-sm">LT</div>
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-caramel to-berry flex items-center justify-center text-white font-bold text-sm">🧋</div>
                         <span class="font-display text-2xl font-bold text-tea">LONG TEA</span>
                     </div>
                     <p class="text-teaLight max-w-sm leading-relaxed mb-6">
@@ -455,55 +407,6 @@
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
         }
-
-        // Make the "Build Your Drink" buttons interactive
-        document.addEventListener('DOMContentLoaded', () => {
-            const buildSection = document.querySelector('section .glass-strong.rounded-\\[2\\.5rem\\]');
-            if (!buildSection) return;
-
-            const progressBars = buildSection.querySelectorAll('.h-2.flex-1.rounded-full');
-            const stepContainers = buildSection.querySelectorAll('.text-center.mb-8, .text-center');
-            
-            // Helper to reset buttons in a group
-            const resetGroup = (buttons, defaultClasses) => {
-                buttons.forEach(btn => {
-                    btn.className = defaultClasses;
-                });
-            };
-
-            // Step 1: Base (4 buttons)
-            const step1Btns = stepContainers[0].querySelectorAll('button');
-            const step1Default = 'glass p-6 rounded-2xl hover:bg-caramel hover:text-cream text-tea transition-all duration-300 group';
-            step1Btns.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    resetGroup(step1Btns, step1Default);
-                    btn.className = 'bg-caramel text-cream p-6 rounded-2xl shadow-lg transition-all duration-300 scale-105';
-                    progressBars[0].className = 'h-2 flex-1 rounded-full bg-caramel transition-all duration-500';
-                });
-            });
-
-            // Step 2: Sweetness (3 buttons)
-            const step2Btns = stepContainers[1].querySelectorAll('button');
-            const step2Default = 'px-8 py-4 rounded-full glass hover:bg-berry hover:text-cream text-tea font-bold transition-all duration-300';
-            step2Btns.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    resetGroup(step2Btns, step2Default);
-                    btn.className = 'px-8 py-4 rounded-full bg-berry text-cream font-bold shadow-lg transition-all duration-300 scale-105';
-                    progressBars[1].className = 'h-2 flex-1 rounded-full bg-caramel transition-all duration-500';
-                });
-            });
-
-            // Step 3: Toppings (4 buttons)
-            const step3Btns = stepContainers[2].querySelectorAll('button');
-            const step3Default = 'glass p-4 rounded-2xl hover:bg-matcha hover:text-cream text-tea transition-all duration-300 font-bold';
-            step3Btns.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    resetGroup(step3Btns, step3Default);
-                    btn.className = 'bg-matcha text-cream p-4 rounded-2xl shadow-lg transition-all duration-300 scale-105';
-                    progressBars[2].className = 'h-2 flex-1 rounded-full bg-caramel transition-all duration-500';
-                });
-            });
-        });
     </script>
 </body>
 </html>
