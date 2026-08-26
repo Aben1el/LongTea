@@ -13,7 +13,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,18 +23,24 @@
             theme: {
                 extend: {
                     colors: {
-                        cream: '#FAF7F2',
-                        beige: '#F5EFE6',
-                        caramel: '#C4A77D',
+                        cream: '#F5F0E8',
+                        ivory: '#FAF7F2',
+                        warmWhite: '#FFFDF9',
+                        beige: '#EDE7DD',
+                        latte: '#D4C4B0',
+                        caramel: '#A67C52',
                         brown: '#6B4423',
                         darkBrown: '#3E2723',
+                        espresso: '#2C1810',
+                        peach: '#E8B4A0',
+                        blush: '#D4A5A5',
                         matcha: '#8B9D77',
-                        berry: '#D4A5A5',
-                        warmWhite: '#FFFDF9',
+                        mango: '#E8A87C',
                     },
                     fontFamily: {
                         display: ['Playfair Display', 'serif'],
                         body: ['Plus Jakarta Sans', 'sans-serif'],
+                        script: ['Cormorant Garamond', 'serif'],
                     },
                 }
             }
@@ -42,39 +48,114 @@
     </script>
     
     <style>
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
         body {
-            background-color: #FFFDF9;
+            background-color: #F5F0E8;
             color: #3E2723;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
         }
         
-        /* Premium Gradient Background */
-        .bg-premium {
-            background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #FAF7F2 100%);
-            background-attachment: fixed;
+        /* Editorial Typography */
+        .text-editorial {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
         
-        .glass {
-            background: rgba(255, 253, 249, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(196, 167, 125, 0.2);
+        .text-script {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
         }
         
-        .glass-nav {
-            background: rgba(255, 253, 249, 0.85);
-            backdrop-filter: blur(30px);
-            border-bottom: 1px solid rgba(196, 167, 125, 0.15);
+        /* Premium Card Style from Reference */
+        .card-ref {
+            background: #EDE7DD;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
-        .text-gradient {
-            background: linear-gradient(135deg, #C4A77D 0%, #D4A5A5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .card-ref:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15);
         }
         
-        /* Smooth Reveal Animation */
+        .card-ref .img-wrap {
+            background: #F5F0E8;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-ref .img-wrap img {
+            max-height: 280px;
+            object-fit: contain;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .card-ref:hover .img-wrap img {
+            transform: scale(1.08);
+        }
+        
+        /* Button Styles from Reference */
+        .btn-ref {
+            background: #3E2723;
+            color: #F5F0E8;
+            border-radius: 50px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-ref:hover {
+            background: #6B4423;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #3E2723;
+            border: 1.5px solid #3E2723;
+            border-radius: 50px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: #3E2723;
+            color: #F5F0E8;
+        }
+        
+        /* Category Pills */
+        .cat-pill {
+            background: #A67C52;
+            color: #F5F0E8;
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .cat-pill:hover, .cat-pill.active {
+            background: #3E2723;
+        }
+        
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -86,242 +167,344 @@
             transform: translateY(0);
         }
         
-        /* Image Hover Effects */
-        .img-hover {
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .group:hover .img-hover {
-            transform: scale(1.05);
-        }
-        
         /* Floating Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
         
         .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        /* Parallax Effect */
-        .parallax {
-            will-change: transform;
+            animation: float 5s ease-in-out infinite;
         }
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
         
         ::-webkit-scrollbar-track {
-            background: #FAF7F2;
+            background: #F5F0E8;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #C4A77D;
-            border-radius: 5px;
+            background: #A67C52;
+            border-radius: 4px;
         }
         
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6B4423;
+        /* Horizontal Scroll for Categories */
+        .scroll-x {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
         
-        /* Large Typography */
-        .text-hero {
-            font-size: clamp(3rem, 10vw, 8rem);
-            line-height: 0.95;
-            letter-spacing: -0.02em;
-        }
-        
-        .text-display {
-            font-size: clamp(2rem, 5vw, 4rem);
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-        }
-        
-        /* Premium Card */
-        .card-premium {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(62, 39, 35, 0.08);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .card-premium:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 80px rgba(62, 39, 35, 0.12);
-        }
-        
-        /* Button Styles */
-        .btn-premium {
-            background: #3E2723;
-            color: white;
-            border-radius: 50px;
-            padding: 1rem 2.5rem;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .btn-premium:hover {
-            background: #C4A77D;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(196, 167, 125, 0.3);
+        .scroll-x::-webkit-scrollbar {
+            display: none;
         }
         
         /* Section Spacing */
-        .section-premium {
-            padding: 8rem 0;
+        .section-lux {
+            padding: 7rem 0;
         }
         
         @media (max-width: 768px) {
-            .section-premium {
-                padding: 5rem 0;
+            .section-lux {
+                padding: 4rem 0;
             }
+        }
+        
+        /* Large Display Text */
+        .text-mega {
+            font-size: clamp(3.5rem, 12vw, 9rem);
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+        }
+        
+        .text-xl-display {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1;
+            letter-spacing: -0.02em;
         }
     </style>
 </head>
-<body class="bg-premium">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-500" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-4">
+    <!-- Navigation - Minimal & Clean like Reference -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-beige/50">
+        <div class="max-w-7xl mx-auto px-6 py-5">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-caramel to-berry flex items-center justify-center text-2xl shadow-lg group-hover:rotate-12 transition-transform duration-300">🧋</div>
-                    <span class="font-display text-2xl font-bold text-darkBrown tracking-tight">LONG TEA</span>
+                <a href="index.html" class="flex items-center gap-2">
+                    <span class="font-display text-2xl font-bold text-darkBrown tracking-tight">Long Tea</span>
                 </a>
                 
                 <div class="hidden md:flex items-center gap-10">
-                    <a href="index.html" class="text-darkBrown font-semibold hover:text-caramel transition-colors">Home</a>
-                    <a href="menu.html" class="text-brown/70 hover:text-caramel transition-colors">Menu</a>
-                    <a href="#story" class="text-brown/70 hover:text-caramel transition-colors">Our Story</a>
-                    <a href="#locations" class="text-brown/70 hover:text-caramel transition-colors">Locations</a>
+                    <a href="index.html" class="text-darkBrown font-medium hover:text-caramel transition-colors text-sm">Home</a>
+                    <a href="menu.html" class="text-brown/70 hover:text-darkBrown transition-colors text-sm">Menu</a>
+                    <a href="#story" class="text-brown/70 hover:text-darkBrown transition-colors text-sm">Our Story</a>
+                    <a href="#locations" class="text-brown/70 hover:text-darkBrown transition-colors text-sm">Locations</a>
                 </div>
                 
-                <a href="menu.html" class="hidden md:inline-flex btn-premium">
-                    Order Now
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </a>
-                
-                <button class="md:hidden w-10 h-10 rounded-full bg-beige/50 flex items-center justify-center" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
+                <div class="flex items-center gap-4">
+                    <button class="hidden md:block text-darkBrown hover:text-caramel transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </button>
+                    <button class="hidden md:block text-darkBrown hover:text-caramel transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </button>
+                    <button class="hidden md:block text-darkBrown hover:text-caramel transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </button>
+                    <button class="md:hidden w-10 h-10 rounded-full bg-beige flex items-center justify-center" onclick="toggleMobileMenu()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 bg-cream/98 backdrop-blur-2xl hidden flex-col items-center justify-center gap-8">
-        <button class="absolute top-6 right-6 w-12 h-12 rounded-full bg-beige/50 flex items-center justify-center" onclick="toggleMobileMenu()">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-cream hidden flex-col items-center justify-center gap-8">
+        <button class="absolute top-6 right-6 w-12 h-12 rounded-full bg-beige flex items-center justify-center" onclick="toggleMobileMenu()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
-        <a href="index.html" onclick="toggleMobileMenu()" class="font-display text-5xl text-darkBrown hover:text-caramel transition-colors">Home</a>
-        <a href="menu.html" onclick="toggleMobileMenu()" class="font-display text-5xl text-darkBrown hover:text-caramel transition-colors">Menu</a>
-        <a href="#story" onclick="toggleMobileMenu()" class="font-display text-5xl text-darkBrown hover:text-caramel transition-colors">Our Story</a>
-        <a href="#locations" onclick="toggleMobileMenu()" class="font-display text-5xl text-darkBrown hover:text-caramel transition-colors">Locations</a>
+        <a href="index.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-darkBrown">Home</a>
+        <a href="menu.html" onclick="toggleMobileMenu()" class="font-display text-4xl text-darkBrown">Menu</a>
+        <a href="#story" onclick="toggleMobileMenu()" class="font-display text-4xl text-darkBrown">Our Story</a>
+        <a href="#locations" onclick="toggleMobileMenu()" class="font-display text-4xl text-darkBrown">Locations</a>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-caramel/20 to-berry/20 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-matcha/20 to-caramel/20 rounded-full blur-[100px]"></div>
+    <!-- HERO SECTION - Editorial Style like Reference -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-cream">
+        <!-- Warm Background Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-cream via-beige/30 to-peach/20"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-peach/10 to-transparent"></div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Text Content -->
-                <div class="reveal active">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-caramel/20 mb-8">
-                        <span class="text-xs font-bold text-caramel tracking-widest uppercase">Now Open at Ambassador Mall</span>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-8 items-center min-h-[85vh]">
+                <!-- Left: Typography -->
+                <div class="reveal active order-2 lg:order-1">
+                    <div class="mb-6">
+                        <span class="text-script text-3xl text-caramel">Welcome</span>
                     </div>
                     
-                    <h1 class="font-display text-hero font-bold text-darkBrown mb-6 leading-[0.95]">
-                        LONG<br>
-                        <span class="text-gradient italic">TEA</span>
+                    <h1 class="text-mega font-display font-bold text-darkBrown mb-8">
+                        ORDER<br>
+                        <span class="text-caramel">TEA</span>
                     </h1>
                     
-                    <p class="text-xl md:text-2xl text-brown/70 mb-10 max-w-lg font-light leading-relaxed">
-                        A moment worth sipping. Premium bubble tea crafted with handmade pearls, fresh ingredients, and endless customization.
+                    <p class="text-lg text-brown/70 mb-10 max-w-md leading-relaxed">
+                        A moment worth sipping. Premium bubble tea crafted with handmade pearls, fresh ingredients, and endless customization at Ambassador Mall.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="menu.html" class="btn-premium group">
-                            Explore Menu
-                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <a href="menu.html" class="btn-ref group">
+                            Order Now
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
-                        <a href="#locations" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-darkBrown/20 text-darkBrown font-semibold hover:bg-darkBrown hover:text-white transition-all duration-300">
-                            Find Us
+                        <a href="#story" class="btn-outline">
+                            Our Story
                         </a>
                     </div>
                 </div>
                 
-                <!-- Hero Image -->
-                <div class="relative reveal active" style="transition-delay: 0.2s">
-                    <div class="relative z-10 animate-float">
-                        <img src="images/boba.jpg" alt="Signature Long Tea Boba" class="w-full max-w-lg mx-auto rounded-[3rem] shadow-2xl object-cover aspect-[4/5]">
+                <!-- Right: Huge Product Image -->
+                <div class="relative reveal active order-1 lg:order-2 flex justify-center items-center">
+                    <div class="relative">
+                        <!-- Pedestal/Base like reference -->
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-32 bg-beige rounded-t-lg shadow-2xl"></div>
+                        
+                        <!-- Main Product Image -->
+                        <img src="images/boba.jpg" alt="Signature Long Tea Boba" class="relative z-10 w-full max-w-md mx-auto animate-float drop-shadow-2xl" style="mix-blend-mode: multiply;">
                         
                         <!-- Floating Badge -->
-                        <div class="absolute -bottom-6 -left-6 bg-white rounded-3xl p-6 shadow-2xl">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-caramel to-berry flex items-center justify-center text-2xl">✨</div>
-                                <div>
-                                    <p class="font-display text-2xl font-bold text-darkBrown">100%</p>
-                                    <p class="text-sm text-brown/70">Handmade Pearls</p>
-                                </div>
-                            </div>
+                        <div class="absolute top-10 -right-4 lg:right-0 bg-peach/80 backdrop-blur-md rounded-full px-6 py-3 shadow-xl z-20">
+                            <p class="font-display text-lg font-bold text-darkBrown">100% Handmade</p>
                         </div>
                     </div>
-                    
-                    <!-- Decorative Elements -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-caramel/10 to-berry/10 rounded-full blur-3xl -z-10"></div>
                 </div>
             </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <svg class="w-6 h-6 text-caramel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </section>
+
+    <!-- MENU PREVIEW SECTION - Like Reference's Menu Section -->
+    <section class="section-lux bg-warmWhite">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="flex items-end justify-between mb-12 reveal">
+                <div>
+                    <h2 class="font-display text-5xl md:text-6xl font-bold text-darkBrown mb-2">Menu</h2>
+                    <p class="text-script text-2xl text-caramel">drinks</p>
+                </div>
+                <a href="menu.html" class="btn-ref hidden md:inline-flex">
+                    my basket
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </a>
+            </div>
+            
+            <!-- Category Pills - Horizontal Scroll on Mobile -->
+            <div class="scroll-x flex gap-3 mb-10 pb-2 reveal">
+                <button class="cat-pill active">Signature</button>
+                <button class="cat-pill">Boba & Milk Tea</button>
+                <button class="cat-pill">Fruit Tea</button>
+                <button class="cat-pill">Specialty</button>
+                <button class="cat-pill">Smoothies</button>
+                <button class="cat-pill">Coffee</button>
+            </div>
+            
+            <!-- Product Grid - Like Reference's Card Style -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="card-ref reveal">
+                    <div class="img-wrap">
+                        <img src="images/boba.jpg" alt="Signature Boba Tea">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-lg font-bold text-darkBrown mb-1">Signature Boba</h3>
+                        <p class="text-xs text-brown/60 mb-3">black tea + milk + pearls</p>
+                        <div class="flex items-center justify-between">
+                            <p class="font-bold text-darkBrown">450 ETB</p>
+                            <a href="menu.html" class="btn-outline text-xs py-2 px-4">to cart</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="card-ref reveal" style="transition-delay: 0.1s">
+                    <div class="img-wrap">
+                        <img src="images/matcha.jpg" alt="Sweet Matcha">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-lg font-bold text-darkBrown mb-1">Sweet Matcha</h3>
+                        <p class="text-xs text-brown/60 mb-3">matcha + fresh milk</p>
+                        <div class="flex items-center justify-between">
+                            <p class="font-bold text-darkBrown">560 ETB</p>
+                            <a href="menu.html" class="btn-outline text-xs py-2 px-4">to cart</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="card-ref reveal" style="transition-delay: 0.2s">
+                    <div class="img-wrap">
+                        <img src="images/mango.jpg" alt="Mango Pomelo Sago">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-lg font-bold text-darkBrown mb-1">Mango Pomelo</h3>
+                        <p class="text-xs text-brown/60 mb-3">mango + pomelo + sago</p>
+                        <div class="flex items-center justify-between">
+                            <p class="font-bold text-darkBrown">630 ETB</p>
+                            <a href="menu.html" class="btn-outline text-xs py-2 px-4">to cart</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="card-ref reveal" style="transition-delay: 0.3s">
+                    <div class="img-wrap">
+                        <img src="images/boba.jpg" alt="Brown Sugar Boba">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-lg font-bold text-darkBrown mb-1">Brown Sugar Boba</h3>
+                        <p class="text-xs text-brown/60 mb-3">brown sugar + milk + pearls</p>
+                        <div class="flex items-center justify-between">
+                            <p class="font-bold text-darkBrown">450 ETB</p>
+                            <a href="menu.html" class="btn-outline text-xs py-2 px-4">to cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 reveal">
+                <a href="menu.html" class="btn-ref">
+                    View Full Menu
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW DRINK PROMOTION - Like Reference's Pink Section -->
+    <section class="section-lux bg-peach/40 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Text -->
+                <div class="reveal">
+                    <h2 class="text-xl-display font-display font-bold text-darkBrown mb-2">
+                        New<br>
+                        <span class="text-script text-4xl md:text-5xl text-caramel font-normal">attention</span>
+                    </h2>
+                    <h3 class="font-display text-3xl md:text-4xl font-bold text-darkBrown mb-4">Mango Pomelo Sago</h3>
+                    <p class="text-brown/70 mb-8 max-w-md leading-relaxed">
+                        A refreshing tropical escape. Sweet mango purée, juicy pomelo sacs, and sago pearls in a light coconut base. Perfect for hot days.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div>
+                            <p class="font-display text-3xl font-bold text-darkBrown">3</p>
+                            <p class="text-xs text-brown/70">Fresh Fruits<br>mango, pomelo, coconut</p>
+                        </div>
+                        <div>
+                            <p class="font-display text-3xl font-bold text-darkBrown">With</p>
+                            <p class="text-xs text-brown/70">sago pearls<br>+ coconut base</p>
+                        </div>
+                        <div>
+                            <p class="font-display text-3xl font-bold text-darkBrown">20%</p>
+                            <p class="text-xs text-brown/70">Off<br>this week</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6">
+                        <div>
+                            <p class="font-display text-4xl font-bold text-darkBrown">630 ETB</p>
+                            <p class="text-sm text-brown/60 line-through">750 ETB</p>
+                        </div>
+                        <a href="menu.html" class="btn-ref">Order Now</a>
+                    </div>
+                </div>
+                
+                <!-- Right: Huge Product Image -->
+                <div class="relative reveal flex justify-center">
+                    <img src="images/mango.jpg" alt="Mango Pomelo Sago" class="w-full max-w-md animate-float drop-shadow-2xl" style="mix-blend-mode: multiply;">
+                    <!-- Decorative Elements -->
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-mango/30 rounded-full blur-2xl"></div>
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-peach/50 rounded-full blur-xl"></div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- BRAND STORY - Editorial Layout -->
-    <section id="story" class="section-premium relative">
+    <section id="story" class="section-lux bg-cream">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Images Grid -->
                 <div class="grid grid-cols-2 gap-6 reveal">
                     <div class="space-y-6">
-                        <img src="images/matcha.jpg" alt="Matcha Tea" class="rounded-3xl shadow-xl w-full object-cover aspect-[3/4]">
-                        <div class="bg-caramel/10 rounded-3xl p-8 flex items-center justify-center">
+                        <img src="images/matcha.jpg" alt="Matcha Tea" class="rounded-lg shadow-xl w-full object-cover aspect-[3/4]" style="mix-blend-mode: multiply;">
+                        <div class="bg-caramel/20 rounded-lg p-8 flex items-center justify-center">
                             <div class="text-center">
                                 <p class="font-display text-5xl font-bold text-caramel mb-2">50+</p>
-                                <p class="text-brown/70">Unique Flavors</p>
+                                <p class="text-sm text-brown/70">Unique Flavors</p>
                             </div>
                         </div>
                     </div>
                     <div class="space-y-6 pt-12">
-                        <div class="bg-berry/10 rounded-3xl p-8 flex items-center justify-center">
+                        <div class="bg-peach/30 rounded-lg p-8 flex items-center justify-center">
                             <div class="text-center">
-                                <p class="font-display text-5xl font-bold text-berry mb-2">100%</p>
-                                <p class="text-brown/70">Fresh Ingredients</p>
+                                <p class="font-display text-5xl font-bold text-blush mb-2">100%</p>
+                                <p class="text-sm text-brown/70">Fresh Ingredients</p>
                             </div>
                         </div>
-                        <img src="images/mango.jpg" alt="Mango Tea" class="rounded-3xl shadow-xl w-full object-cover aspect-[3/4]">
+                        <img src="images/mango.jpg" alt="Mango Tea" class="rounded-lg shadow-xl w-full object-cover aspect-[3/4]" style="mix-blend-mode: multiply;">
                     </div>
                 </div>
                 
                 <!-- Text Content -->
                 <div class="reveal">
-                    <p class="text-caramel font-semibold tracking-widest uppercase text-sm mb-4">Our Story</p>
-                    <h2 class="font-display text-display font-bold text-darkBrown mb-6">
+                    <p class="text-script text-3xl text-caramel mb-4">Our Story</p>
+                    <h2 class="font-display text-5xl md:text-6xl font-bold text-darkBrown mb-6 leading-tight">
                         Where Tradition<br>
-                        <span class="italic text-gradient">Meets Innovation</span>
+                        <span class="text-caramel italic">Meets Innovation</span>
                     </h2>
                     <p class="text-lg text-brown/70 leading-relaxed mb-6">
                         At Long Tea, we believe every sip should be an experience. Inspired by centuries of tea culture and refined with modern craftsmanship, we bring you bubble tea that transcends the ordinary.
@@ -332,16 +515,16 @@
                     
                     <div class="grid grid-cols-3 gap-6">
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-caramel/10 flex items-center justify-center mx-auto mb-3 text-3xl">🌿</div>
-                            <p class="font-semibold text-darkBrown">Premium</p>
+                            <div class="w-16 h-16 rounded-full bg-caramel/20 flex items-center justify-center mx-auto mb-3 text-2xl">🍵</div>
+                            <p class="font-semibold text-darkBrown text-sm">Premium</p>
                         </div>
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-berry/10 flex items-center justify-center mx-auto mb-3 text-3xl">🤎</div>
-                            <p class="font-semibold text-darkBrown">Handmade</p>
+                            <div class="w-16 h-16 rounded-full bg-peach/30 flex items-center justify-center mx-auto mb-3 text-2xl">🤎</div>
+                            <p class="font-semibold text-darkBrown text-sm">Handmade</p>
                         </div>
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-matcha/10 flex items-center justify-center mx-auto mb-3 text-3xl">✨</div>
-                            <p class="font-semibold text-darkBrown">Fresh</p>
+                            <div class="w-16 h-16 rounded-full bg-matcha/20 flex items-center justify-center mx-auto mb-3 text-2xl">✨</div>
+                            <p class="font-semibold text-darkBrown text-sm">Fresh</p>
                         </div>
                     </div>
                 </div>
@@ -349,133 +532,45 @@
         </div>
     </section>
 
-    <!-- FEATURED DRINKS -->
-    <section class="section-premium bg-white/50">
+    <!-- WHY LONG TEA - Asymmetrical Editorial -->
+    <section class="section-lux bg-warmWhite">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <p class="text-caramel font-semibold tracking-widest uppercase text-sm mb-4">Signature Collection</p>
-                <h2 class="font-display text-display font-bold text-darkBrown mb-6">
-                    Customer <span class="italic text-gradient">Favorites</span>
-                </h2>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Featured 1 -->
-                <div class="group card-premium reveal">
-                    <div class="relative h-96 overflow-hidden bg-beige/50">
-                        <img src="images/boba.jpg" alt="Signature Boba" class="w-full h-full object-cover img-hover">
-                        <div class="absolute top-6 left-6 px-4 py-2 bg-white/90 rounded-full">
-                            <span class="text-xs font-bold text-caramel">SIGNATURE</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-display text-2xl font-bold text-darkBrown mb-2">Signature Boba Tea</h3>
-                        <p class="text-brown/70 mb-4">Classic black tea, creamy milk, warm brown sugar pearls</p>
-                        <div class="flex items-center justify-between">
-                            <p class="text-caramel font-bold text-lg">From 450 ETB</p>
-                            <a href="menu.html" class="text-darkBrown font-semibold hover:text-caramel transition-colors flex items-center gap-2">
-                                Order
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Featured 2 -->
-                <div class="group card-premium reveal" style="transition-delay: 0.1s">
-                    <div class="relative h-96 overflow-hidden bg-beige/50">
-                        <img src="images/matcha.jpg" alt="Sweet Matcha" class="w-full h-full object-cover img-hover">
-                        <div class="absolute top-6 left-6 px-4 py-2 bg-white/90 rounded-full">
-                            <span class="text-xs font-bold text-matcha">POPULAR</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-display text-2xl font-bold text-darkBrown mb-2">Sweet Matcha</h3>
-                        <p class="text-brown/70 mb-4">Ceremonial grade matcha, fresh milk, natural sweetness</p>
-                        <div class="flex items-center justify-between">
-                            <p class="text-caramel font-bold text-lg">560 ETB</p>
-                            <a href="menu.html" class="text-darkBrown font-semibold hover:text-caramel transition-colors flex items-center gap-2">
-                                Order
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Featured 3 -->
-                <div class="group card-premium reveal" style="transition-delay: 0.2s">
-                    <div class="relative h-96 overflow-hidden bg-beige/50">
-                        <img src="images/mango.jpg" alt="Mango Pomelo" class="w-full h-full object-cover img-hover">
-                        <div class="absolute top-6 left-6 px-4 py-2 bg-white/90 rounded-full">
-                            <span class="text-xs font-bold text-berry">REFRESHING</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-display text-2xl font-bold text-darkBrown mb-2">Mango Pomelo Sago</h3>
-                        <p class="text-brown/70 mb-4">Tropical mango, juicy pomelo, sago pearls</p>
-                        <div class="flex items-center justify-between">
-                            <p class="text-caramel font-bold text-lg">630 ETB</p>
-                            <a href="menu.html" class="text-darkBrown font-semibold hover:text-caramel transition-colors flex items-center gap-2">
-                                Order
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12 reveal">
-                <a href="menu.html" class="btn-premium">
-                    View Full Menu
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY LONG TEA -->
-    <section class="section-premium">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <p class="text-caramel font-semibold tracking-widest uppercase text-sm mb-4">Why Choose Us</p>
-                    <h2 class="font-display text-display font-bold text-darkBrown mb-8">
+            <div class="grid lg:grid-cols-5 gap-12 items-center">
+                <div class="lg:col-span-2 reveal">
+                    <p class="text-script text-3xl text-caramel mb-4">Why Choose Us</p>
+                    <h2 class="font-display text-5xl md:text-6xl font-bold text-darkBrown mb-8 leading-tight">
                         Crafted for<br>
-                        <span class="italic text-gradient">Excellence</span>
+                        <span class="text-caramel italic">Excellence</span>
                     </h2>
-                    
-                    <div class="space-y-6">
-                        <div class="flex gap-6 items-start group">
-                            <div class="w-16 h-16 rounded-2xl bg-caramel/10 flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">🍵</div>
-                            <div>
-                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Premium Tea Base</h3>
-                                <p class="text-brown/70">Sourced from the finest tea gardens, carefully selected for optimal flavor and aroma.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-6 items-start group">
-                            <div class="w-16 h-16 rounded-2xl bg-berry/10 flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">🤎</div>
-                            <div>
-                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Handmade Daily</h3>
-                                <p class="text-brown/70">Our signature pearls are crafted fresh every day using traditional techniques.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-6 items-start group">
-                            <div class="w-16 h-16 rounded-2xl bg-matcha/10 flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">🎨</div>
-                            <div>
-                                <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Fully Customizable</h3>
-                                <p class="text-brown/70">Your drink, your way. Choose sweetness, ice level, and endless toppings.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="menu.html" class="btn-ref">
+                        Explore Menu
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
                 </div>
                 
-                <div class="relative reveal">
-                    <img src="https://images.unsplash.com/photo-1558855410-3112e2139405?q=80&w=1000&auto=format&fit=crop" alt="Long Tea Craftsmanship" class="rounded-[3rem] shadow-2xl w-full">
-                    <div class="absolute -bottom-8 -right-8 bg-white rounded-3xl p-8 shadow-2xl max-w-xs hidden lg:block">
-                        <p class="font-display text-3xl font-bold text-darkBrown mb-2">"Every cup is a work of art"</p>
-                        <p class="text-brown/70">— Long Tea Philosophy</p>
+                <div class="lg:col-span-3 space-y-6 reveal">
+                    <div class="flex gap-6 items-start group bg-beige/30 p-6 rounded-lg">
+                        <div class="w-16 h-16 rounded-full bg-caramel/20 flex items-center justify-center text-2xl flex-shrink-0">🍵</div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Premium Tea Base</h3>
+                            <p class="text-brown/70">Sourced from the finest tea gardens, carefully selected for optimal flavor and aroma.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-6 items-start group bg-beige/30 p-6 rounded-lg">
+                        <div class="w-16 h-16 rounded-full bg-peach/30 flex items-center justify-center text-2xl flex-shrink-0">🤎</div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Handmade Daily</h3>
+                            <p class="text-brown/70">Our signature pearls are crafted fresh every day using traditional techniques.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-6 items-start group bg-beige/30 p-6 rounded-lg">
+                        <div class="w-16 h-16 rounded-full bg-matcha/20 flex items-center justify-center text-2xl flex-shrink-0">🎨</div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-darkBrown mb-2">Fully Customizable</h3>
+                            <p class="text-brown/70">Your drink, your way. Choose sweetness, ice level, and endless toppings.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -483,58 +578,58 @@
     </section>
 
     <!-- LOCATIONS -->
-    <section id="locations" class="section-premium bg-white/50">
+    <section id="locations" class="section-lux bg-cream">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <p class="text-caramel font-semibold tracking-widest uppercase text-sm mb-4">Visit Us</p>
-                <h2 class="font-display text-display font-bold text-darkBrown mb-6">
-                    Find Your <span class="italic text-gradient">Long Tea</span>
+                <p class="text-script text-3xl text-caramel mb-4">Visit Us</p>
+                <h2 class="font-display text-5xl md:text-6xl font-bold text-darkBrown">
+                    Find Your <span class="text-caramel italic">Long Tea</span>
                 </h2>
             </div>
             
             <div class="max-w-5xl mx-auto">
-                <div class="card-premium reveal overflow-hidden">
+                <div class="card-ref reveal overflow-hidden">
                     <div class="grid lg:grid-cols-2">
                         <div class="p-12 flex flex-col justify-center">
-                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-caramel/10 text-caramel text-sm font-bold mb-6 w-fit">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-caramel/20 text-caramel text-sm font-bold mb-6 w-fit">
                                 📍 Ambassador Branch
                             </div>
                             <h3 class="font-display text-3xl font-bold text-darkBrown mb-6">Long Tea<br>Ambassador Mall</h3>
                             
                             <div class="space-y-4 mb-8">
                                 <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0">📍</div>
+                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-lg">📍</div>
                                     <div>
                                         <p class="font-semibold text-darkBrown">4 Kilo, 3rd Floor</p>
-                                        <p class="text-brown/70">Ambassador Mall, Addis Ababa</p>
+                                        <p class="text-brown/70 text-sm">Ambassador Mall, Addis Ababa</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0">📞</div>
+                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-lg">📞</div>
                                     <div>
                                         <p class="font-semibold text-darkBrown">Call Us</p>
-                                        <a href="tel:+251951075065" class="text-brown/70 hover:text-caramel transition-colors">095 107 5065</a>
+                                        <a href="tel:+251951075065" class="text-brown/70 text-sm hover:text-caramel transition-colors">095 107 5065</a>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0">🕐</div>
+                                    <div class="w-10 h-10 rounded-full bg-beige flex items-center justify-center flex-shrink-0 text-lg">🕐</div>
                                     <div>
                                         <p class="font-semibold text-darkBrown">Hours</p>
-                                        <p class="text-brown/70">Daily: 10:00 AM - 10:00 PM</p>
+                                        <p class="text-brown/70 text-sm">Daily: 10:00 AM - 10:00 PM</p>
                                     </div>
                                 </div>
                             </div>
                             
-                            <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" class="btn-premium w-fit">
+                            <a href="https://maps.google.com/?q=Ambassador+Mall+Addis+Ababa" target="_blank" class="btn-ref w-fit">
                                 Get Directions
                             </a>
                         </div>
                         
-                        <div class="relative min-h-[400px] lg:min-h-full">
+                        <div class="relative min-h-[400px] lg:min-h-full bg-beige">
                             <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop" alt="Ambassador Mall Location" class="absolute inset-0 w-full h-full object-cover">
                             <div class="absolute inset-0 bg-darkBrown/20 flex items-center justify-center">
-                                <div class="bg-white rounded-full px-8 py-4 shadow-2xl">
-                                    <p class="font-semibold text-darkBrown flex items-center gap-2">
+                                <div class="bg-warmWhite rounded-full px-8 py-4 shadow-2xl">
+                                    <p class="font-semibold text-darkBrown flex items-center gap-2 text-sm">
                                         🗺️ View on Map
                                     </p>
                                 </div>
@@ -547,62 +642,55 @@
     </section>
 
     <!-- FINAL CTA -->
-    <section class="section-premium">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="card-premium reveal overflow-hidden relative">
-                <div class="absolute inset-0 bg-gradient-to-br from-caramel/20 via-beige/20 to-berry/20"></div>
-                <div class="relative z-10 p-16 text-center">
-                    <h2 class="font-display text-display font-bold text-darkBrown mb-6">
-                        Ready to Sip?
-                    </h2>
-                    <p class="text-xl text-brown/70 mb-10 max-w-2xl mx-auto">
-                        Visit us at Ambassador Mall or explore our full menu to discover your perfect Long Tea creation.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="menu.html" class="btn-premium">
-                            Order Now
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                        <a href="#locations" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-darkBrown/20 text-darkBrown font-semibold hover:bg-darkBrown hover:text-white transition-all duration-300">
-                            Find Location
-                        </a>
-                    </div>
-                </div>
+    <section class="section-lux bg-peach/30">
+        <div class="max-w-5xl mx-auto px-6 text-center reveal">
+            <p class="text-script text-3xl text-caramel mb-4">Ready?</p>
+            <h2 class="font-display text-5xl md:text-7xl font-bold text-darkBrown mb-6">
+                Ready to <span class="italic text-caramel">Sip?</span>
+            </h2>
+            <p class="text-lg text-brown/70 mb-10 max-w-2xl mx-auto">
+                Visit us at Ambassador Mall or explore our full menu to discover your perfect Long Tea creation.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="menu.html" class="btn-ref">
+                    Order Now
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+                <a href="#locations" class="btn-outline">
+                    Find Location
+                </a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-darkBrown text-cream py-20">
+    <footer class="bg-darkBrown text-cream py-16">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 mb-16">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-caramel to-berry flex items-center justify-center text-2xl">🧋</div>
-                        <span class="font-display text-3xl font-bold">LONG TEA</span>
-                    </div>
-                    <p class="text-cream/70 max-w-sm leading-relaxed mb-6">
+                    <span class="font-display text-3xl font-bold block mb-4">Long Tea</span>
+                    <p class="text-cream/70 max-w-sm leading-relaxed">
                         Premium bubble tea crafted with love, tradition, and innovation. Every sip is a moment worth savoring.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-display text-xl font-bold mb-6">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="index.html" class="text-cream/70 hover:text-caramel transition-colors">Home</a></li>
-                        <li><a href="menu.html" class="text-cream/70 hover:text-caramel transition-colors">Menu</a></li>
-                        <li><a href="#story" class="text-cream/70 hover:text-caramel transition-colors">Our Story</a></li>
-                        <li><a href="#locations" class="text-cream/70 hover:text-caramel transition-colors">Locations</a></li>
+                    <h4 class="font-display text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Home</a></li>
+                        <li><a href="menu.html" class="text-cream/70 hover:text-caramel transition-colors text-sm">Menu</a></li>
+                        <li><a href="#story" class="text-cream/70 hover:text-caramel transition-colors text-sm">Our Story</a></li>
+                        <li><a href="#locations" class="text-cream/70 hover:text-caramel transition-colors text-sm">Locations</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-display text-xl font-bold mb-6">Contact</h4>
-                    <ul class="space-y-3 text-cream/70">
+                    <h4 class="font-display text-lg font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-cream/70 text-sm">
                         <li>Ambassador Mall<br>4 Kilo, Addis Ababa</li>
                         <li><a href="tel:+251951075065" class="hover:text-caramel transition-colors">095 107 5065</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="pt-8 border-t border-cream/10 text-center text-cream/50">
+            <div class="pt-8 border-t border-cream/10 text-center text-cream/50 text-sm">
                 <p>© 2026 Long Tea Ethiopia. All rights reserved.</p>
             </div>
         </div>
@@ -620,7 +708,7 @@
         // Scroll Reveal Animation
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
@@ -632,21 +720,6 @@
         }, observerOptions);
         
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        
-        // Navbar Scroll Effect
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                navbar.classList.add('shadow-lg');
-            } else {
-                navbar.classList.remove('shadow-lg');
-            }
-            
-            lastScroll = currentScroll;
-        });
     </script>
 </body>
 </html>
